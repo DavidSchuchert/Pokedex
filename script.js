@@ -4,7 +4,7 @@ let allPokemonNames = [];
 let allPokemonTypes = [];
 
 async function init() {
-    
+
     await loadAllPokemon();
     loadAllPokemonNames();
     showLoadingScreen();
@@ -34,19 +34,19 @@ function loadAllPokemonTypes() {
     }
 }
 
-function openPokemonCard(i){
+function openPokemonCard(i) {
 
     if (allPokemonTypes[i] == "grass") {
         document.getElementById('fullScreenCard').style.display = "flex";
         document.getElementById('fullScreenCard').innerHTML = `
         <div class="fullscreen_card_small" style="background-color: lightgreen"><img src="${currentPokemon[i]['sprites']['other']['official-artwork']['front_default']}" alt="">
-                <div class="line">
+                <div class="line"></div>
                     <div class="card_buttons">
                         <button type="button" class="btn btn-primary">Type</button>
                         <button type="button" class="btn btn-primary">Stats</button>
                         <button type="button" class="btn btn-primary">Start Abilitys</button>
                     </div>
-                </div>
+                      <div class="show_types" id="showTypes">${currentPokemon[i]['types']['0']['type']['name']} ${currentPokemon[i]['types']['1']['type']['name']}</div>
             </div>
         `
     }
@@ -55,13 +55,13 @@ function openPokemonCard(i){
         document.getElementById('fullScreenCard').style.display = "flex";
         document.getElementById('fullScreenCard').innerHTML = `
         <div class="fullscreen_card_small" style="background-color: #F3B34C"><img src="${currentPokemon[i]['sprites']['other']['official-artwork']['front_default']}" alt="">
-                <div class="line">
+                <div class="line"></div>
                     <div class="card_buttons">
                         <button type="button" class="btn btn-primary">Type</button>
                         <button type="button" class="btn btn-primary">Stats</button>
                         <button type="button" class="btn btn-primary">Start Abilitys</button>
                     </div>
-                </div>
+                <div class="show_types" id="showTypes">${currentPokemon[i]['types']['0']['type']['name']} ${currentPokemon[i]['types']['1']['type']['name']}</div>
             </div>
         `
     }
@@ -70,13 +70,14 @@ function openPokemonCard(i){
         document.getElementById('fullScreenCard').style.display = "flex";
         document.getElementById('fullScreenCard').innerHTML = `
         <div class="fullscreen_card_small" style="background-color: lightblue"><img src="${currentPokemon[i]['sprites']['other']['official-artwork']['front_default']}" alt="">
-                <div class="line">
+                <div class="line"></div>
                     <div class="card_buttons">
                         <button type="button" class="btn btn-primary">Type</button>
                         <button type="button" class="btn btn-primary">Stats</button>
                         <button type="button" class="btn btn-primary">Start Abilitys</button>
                     </div>
-                </div>
+                
+                <div class="show_types" id="showTypes">${currentPokemon[i]['types']['0']['type']['name']} ${currentPokemon[i]['types']['1']['type']['name']}</div>
             </div>
         `
     }
@@ -85,13 +86,14 @@ function openPokemonCard(i){
         document.getElementById('fullScreenCard').style.display = "flex";
         document.getElementById('fullScreenCard').innerHTML = `
         <div class="fullscreen_card_small" style="background-color: lightgreen"><img src="${currentPokemon[i]['sprites']['other']['official-artwork']['front_default']}" alt="">
-                <div class="line">
+                <div class="line"></div>
                     <div class="card_buttons">
                         <button type="button" class="btn btn-primary">Type</button>
                         <button type="button" class="btn btn-primary">Stats</button>
                         <button type="button" class="btn btn-primary">Start Abilitys</button>
                     </div>
-                </div>
+                
+                <div class="show_types" id="showTypes">${currentPokemon[i]['types']['0']['type']['name']} ${currentPokemon[i]['types']['1']['type']['name']}</div>
             </div>
         `
     }
@@ -100,13 +102,14 @@ function openPokemonCard(i){
         document.getElementById('fullScreenCard').style.display = "flex";
         document.getElementById('fullScreenCard').innerHTML = `
         <div class="fullscreen_card_small" style="background-color: lightgray"><img src="${currentPokemon[i]['sprites']['other']['official-artwork']['front_default']}" alt="">
-                <div class="line">
+                <div class="line"></div>
                     <div class="card_buttons">
                         <button type="button" class="btn btn-primary">Type</button>
                         <button type="button" class="btn btn-primary">Stats</button>
                         <button type="button" class="btn btn-primary">Start Abilitys</button>
                     </div>
-                </div>
+                
+                <div class="show_types" id="showTypes">${currentPokemon[i]['types']['0']['type']['name']} ${currentPokemon[i]['types']['1']['type']['name']}</div>
             </div>
         `
     }
@@ -114,7 +117,7 @@ function openPokemonCard(i){
 
 }
 
-function closePokemonCard(){
+function closePokemonCard() {
     document.getElementById('fullScreenCard').style.display = "none";
 }
 
@@ -217,10 +220,10 @@ function addNormalType(i) {
     `
 }
 
-function showLoadingScreen(){
+function showLoadingScreen() {
     document.getElementById('loading').style.display = "flex";
 }
 
-function endLoadingScreen(){
+function endLoadingScreen() {
     document.getElementById('loading').style.display = "none";
 }
