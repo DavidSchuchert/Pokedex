@@ -21,7 +21,6 @@ async function loadAllPokemon() {
     console.log('Loaded Pokemon', allPokemon);
 }
 
-
 function loadAllPokemonNames() {
     for (let i = 0; i < allPokemon['results'].length; i++) {
         allPokemonNames.push(allPokemon['results'][i]['name']);
@@ -36,69 +35,147 @@ function loadAllPokemonTypes() {
 }
 
 
-function changePokemonCardBackground(i){
+function changePokemonCardBackground(i) {
 
     if (allPokemonTypes[i] == "grass") {
         backgroundColorCards = 'style="background-color: lightgreen"';
-        }
-        
-        if (allPokemonTypes[i] == "fire") {
-            backgroundColorCards = 'style="background-color: #F3B34C"';
-        }
-        if (allPokemonTypes[i] == "water") {
-            backgroundColorCards = 'style="background-color: lightblue"';
-        }
-        if (allPokemonTypes[i] == "bug") {
-            backgroundColorCards = 'style="background-color: lightgreen"';
-        }
-        
-        if (allPokemonTypes[i] == "normal") {
-            backgroundColorCards = 'style="background-color: lightgrey"';
-        }
+    }
+
+    if (allPokemonTypes[i] == "fire") {
+        backgroundColorCards = 'style="background-color: #F3B34C"';
+    }
+    if (allPokemonTypes[i] == "water") {
+        backgroundColorCards = 'style="background-color: lightblue"';
+    }
+    if (allPokemonTypes[i] == "bug") {
+        backgroundColorCards = 'style="background-color: lightgreen"';
+    }
+
+    if (allPokemonTypes[i] == "normal") {
+        backgroundColorCards = 'style="background-color: lightgrey"';
+    }
 }
 
 function openPokemonCard(i) {
 
     changePokemonCardBackground(i);
 
-if (currentPokemon[i]['types'].length >1){
-    renderPokemoncardWithOneType(i);
+    if (currentPokemon[i]['types'].length > 1) {
 
-} else{
-    renderPokemoncardWithMultipleTypes(i);
+        renderPokemoncardWithMultipleTypes(i)
+
+    } else {
+        renderPokemoncardWithOneType(i);
+    }
+
 }
 
-}
-
-function renderPokemoncardWithOneType(i){
+function renderPokemoncardWithMultipleTypes(i) {
     document.getElementById('fullScreenCard').style.display = "flex";
     document.getElementById('fullScreenCard').innerHTML = `
-    <div id="fullscreenCardSmall" class="fullscreen_card_small" ${backgroundColorCards}><img src="${currentPokemon[i]['sprites']['other']['official-artwork']['front_default']}" alt="">
-            <div class="line"></div>
-                <div class="card_buttons">
-                    <button type="button" class="btn btn-primary">Type</button>
-                    <button type="button" class="btn btn-primary">Stats</button>
-                    <button type="button" class="btn btn-primary">Start Abilitys</button>
-                </div>
-                  <div class="show_types" id="showTypes">${currentPokemon[i]['types']['0']['type']['name']} ${currentPokemon[i]['types']['1']['type']['name']}</div>
+    <div id="fullscreenCardSmall" class="fullscreen_card_small" ${backgroundColorCards}>
+    <h2>${currentPokemon[i]['name']}</h2>
+    <img src="${currentPokemon[i]['sprites']['other']['official-artwork']['front_default']}" alt="">
+    <div class="line"></div>
+    <div class="card_buttons">
+        <button onclick="showType(event)" type="button" class="btn btn-primary">Type</button>
+        <button onclick="showStats(event)" type="button" class="btn btn-primary">Stats</button>
+        <button onclick="showAbilitys(event)" type="button" class="btn btn-primary">Start Abilitys</button>
+    </div>
+
+    <div id="typesection" class="types_section">
+        <h2> Type/s: </h2>
+        <div class="show_types" id="showTypes">
+
+            <button type="button" class="btn btn-success">${currentPokemon[i]['types']['0']['type']['name']}</button>
+            <button type="button" class="btn btn-success">${currentPokemon[i]['types']['1']['type']['name']}</button>
         </div>
+    </div>
+    <div id="abilitysection" class="abilitys_section">
+        <h2> Abilities: </h2>
+        <div class="show_abilitys" id="showTypes">
+            <button type="button" class="btn btn-success">${currentPokemon[i]['abilities']['0']['ability']['name']}</button>
+            <button type="button" class="btn btn-success">${currentPokemon[i]['abilities']['1']['ability']['name']}</button>
+        </div>
+    </div>
+
+    <div id="statssection" class="stats_section">
+        <h2> Stats: </h2>
+        <div class="show_stats" id="showTypes">
+            <button type="button" class="btn btn-success">Base Stat: ${currentPokemon[i]['stats']['0']['base_stat']}</button>
+        </div>
+    </div>
+
+    </div>
     `
+
+    showType(event);
 }
 
-function renderPokemoncardWithMultipleTypes(i){
+function renderPokemoncardWithOneType(i) {
     document.getElementById('fullScreenCard').style.display = "flex";
     document.getElementById('fullScreenCard').innerHTML = `
-    <div id="fullscreenCardSmall" class="fullscreen_card_small" ${backgroundColorCards}><img src="${currentPokemon[i]['sprites']['other']['official-artwork']['front_default']}" alt="">
-            <div class="line"></div>
-                <div class="card_buttons">
-                    <button type="button" class="btn btn-primary">Type</button>
-                    <button type="button" class="btn btn-primary">Stats</button>
-                    <button type="button" class="btn btn-primary">Start Abilitys</button>
-                </div>
-                  <div class="show_types" id="showTypes">${currentPokemon[i]['types']['0']['type']['name']}</div>
+    <div id="fullscreenCardSmall" class="fullscreen_card_small" ${backgroundColorCards}>
+    <h2>${currentPokemon[i]['name']}</h2>
+    <img src="${currentPokemon[i]['sprites']['other']['official-artwork']['front_default']}" alt="">
+    <div class="line"></div>
+    <div class="card_buttons">
+        <button onclick="showType(event)" type="button" class="btn btn-primary">Type</button>
+        <button onclick="showStats(event)" type="button" class="btn btn-primary">Stats</button>
+        <button onclick="showAbilitys(event)" type="button" class="btn btn-primary">Start Abilitys</button>
+    </div>
+
+    <div id="typesection" class="types_section">
+        <h2> Type/s: </h2>
+        <div class="show_types" id="showTypes">
+            <button type="button" class="btn btn-success">${currentPokemon[i]['types']['0']['type']['name']}</button>
         </div>
-    `
+    </div>
+
+
+    <div id="abilitysection" class="abilitys_section">
+        <h2> Abilities: </h2>
+        <div class="show_abilitys" id="showTypes">
+        <button type="button" class="btn btn-success">${currentPokemon[i]['abilities']['0']['ability']['name']}</button>
+        <button type="button" class="btn btn-success">${currentPokemon[i]['abilities']['1']['ability']['name']}</button>
+        </div>
+    </div>
+
+
+    <div id="statssection" class="stats_section">
+        <h2> Stats: </h2>
+        <div class="show_stats" id="showTypes">
+        <button type="button" class="btn btn-success">Base Stat: ${currentPokemon[i]['stats']['0']['base_stat']}</button>
+        </div>
+    </div>
+  </div>
+`
+
+showType(event);
+
 }
+
+function showStats(event) {
+    document.getElementById('statssection').style.display = "block";
+    document.getElementById('typesection').style.display = "none";
+    document.getElementById('abilitysection').style.display = "none";
+    event.stopPropagation();
+}
+
+function showType(event) {
+    document.getElementById('statssection').style.display = "none";
+    document.getElementById('typesection').style.display = "block";
+    document.getElementById('abilitysection').style.display = "none";
+    event.stopPropagation();
+}
+
+function showAbilitys(event) {
+    document.getElementById('statssection').style.display = "none";
+    document.getElementById('typesection').style.display = "none";
+    document.getElementById('abilitysection').style.display = "block";
+    event.stopPropagation();
+}
+
 
 function closePokemonCard() {
     document.getElementById('fullScreenCard').style.display = "none";
