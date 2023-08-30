@@ -120,14 +120,13 @@ h2 {
     border: 8px solid rgb(238, 238, 0);
     border-radius: 16px;
     margin: 16px;
-    transition: transform 0.3s ease;
+    transition: transform 0.5s ease;
 }
 
 .main_card:hover {
-    transform: perspective(400px) rotateY(15deg) scale(1.05);
+    transform: perspective(400px) rotateY(35deg) scale(1.05);
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
 }
-
 .pokemon_card {
     color: black;
     text-align: center;
@@ -156,10 +155,11 @@ h2 {
     max-width: 300px;
     gap: 70px;
     text-decoration: underline;
+    
 }
 .fullscreen_card_small {
-    height: 600px;
-    width: 799px;
+    max-height: 600px;
+    max-width: 799px;
     background-color: #F3B34C;
     border: 8px solid rgb(238, 238, 0);
     border-radius: 16px;
@@ -167,9 +167,14 @@ h2 {
     justify-content: space-evenly;
     flex-direction: row;
     align-items: center;
+    background-size: cover;
+    ;
 }
 .fullscreen_card_small h2 {
-font-weight: bold;
+    font-weight: bold;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: white;
+    font-size: 32px;
 }
 
 .fullscreen_card_small img{
@@ -182,7 +187,11 @@ font-weight: bold;
     text-transform: uppercase;
     flex-direction: column;
     gap: 8px;
-    padding-left: 8px;
+    margin-left: 8px;
+    background-color: rgba(255,255,255,0.8);
+    border-radius: 8px;
+    border: 1px solid grey;
+    font-weight: bold;
 }
 
 .pkmninfo p{
@@ -239,4 +248,8 @@ font-weight: bold;
 .loadmorebutton img{
     height: 27px;
     padding-right: 8px;
+}
+
+.leftmenu{
+    width: 20%;
 }

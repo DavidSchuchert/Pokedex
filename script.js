@@ -4,6 +4,8 @@ let allPokemonNames = [];
 let allPokemonTypes = [];
 let backgroundColorCards = "";
 let pokemonLoadAmmount = 20;
+let typebgcolor1 = "";
+let typebgcolor2 = "";
 
 async function init() {
 
@@ -49,21 +51,21 @@ function loadAllPokemonTypes() {
 function changePokemonCardBackground(i) {
 
     if (allPokemonTypes[i] == "grass") {
-        backgroundColorCards = 'style="background-color: #4cc94c"';
+        backgroundColorCards = 'style="background-image: url(./img/field.webp);"';
     }
 
     if (allPokemonTypes[i] == "fire") {
-        backgroundColorCards = 'style="background-color: #F3B34C"';
+        backgroundColorCards = 'style="background-image: url(./img/fire.jpg);"';
     }
     if (allPokemonTypes[i] == "water") {
-        backgroundColorCards = 'style="background-color: lightblue"';
+        backgroundColorCards = 'style="background-image: url(./img/water.avif);"';
     }
     if (allPokemonTypes[i] == "bug") {
-        backgroundColorCards = 'style="background-color: lightgreen"';
+        backgroundColorCards = 'style="background-image: url(./img/bug.jpeg);"';
     }
 
     if (allPokemonTypes[i] == "normal") {
-        backgroundColorCards = 'style="background-color: lightgrey"';
+        backgroundColorCards = 'style="background-image: url(./img/normal.jpeg);"';
     }
 }
 
@@ -133,8 +135,81 @@ function createChart(i) {
         }
     });
 }
+function createColoredTypeButton(i){
 
+
+if (currentPokemon[i]['types']['0']['type']['name'] == 'grass'){
+    typebgcolor1 = "green !important";
+}
+if (currentPokemon[i]['types']['0']['type']['name'] == 'fire'){
+    typebgcolor1 = "red !important";
+}
+if (currentPokemon[i]['types']['0']['type']['name'] == 'water'){
+    typebgcolor1 = "blue !important";
+}
+if (currentPokemon[i]['types']['0']['type']['name'] == 'normal'){
+    typebgcolor1 = "grey !important";
+}
+if (currentPokemon[i]['types']['0']['type']['name'] == 'bug'){
+    typebgcolor1 = "lightgreen !important";
+}
+if (currentPokemon[i]['types']['0']['type']['name'] == 'flying'){
+    typebgcolor1 = "lightblue !important";
+}
+if (currentPokemon[i]['types']['0']['type']['name'] == 'poison'){
+    typebgcolor1 = "#C8A2C8 !important";
+}
+if (currentPokemon[i]['types']['1']['type']['name'] == 'grass'){
+    typebgcolor2 = "green !important";
+}
+if (currentPokemon[i]['types']['1']['type']['name'] == 'fire'){
+    typebgcolor2 = "red !important";
+}
+if (currentPokemon[i]['types']['1']['type']['name'] == 'water'){
+    typebgcolor2 = "blue !important";
+}
+if (currentPokemon[i]['types']['1']['type']['name'] == 'normal'){
+    typebgcolor2 = "grey !important";
+}
+if (currentPokemon[i]['types']['1']['type']['name'] == 'bug'){
+    typebgcolor2 = "lightgreen !important";
+}
+if (currentPokemon[i]['types']['1']['type']['name'] == 'flying'){
+    typebgcolor2 = "lightblue !important";
+}
+if (currentPokemon[i]['types']['1']['type']['name'] == 'poison'){
+    typebgcolor2 = "#C8A2C8 !important";
+}
+
+}
+function createColoredTypeButtonsimple(i){
+
+
+    if (currentPokemon[i]['types']['0']['type']['name'] == 'grass'){
+        typebgcolor1 = "green !important";
+    }
+    if (currentPokemon[i]['types']['0']['type']['name'] == 'fire'){
+        typebgcolor1 = "red !important";
+    }
+    if (currentPokemon[i]['types']['0']['type']['name'] == 'water'){
+        typebgcolor1 = "blue !important";
+    }
+    if (currentPokemon[i]['types']['0']['type']['name'] == 'normal'){
+        typebgcolor1 = "grey !important";
+    }
+    if (currentPokemon[i]['types']['0']['type']['name'] == 'bug'){
+        typebgcolor1 = "lightgreen !important";
+    }
+    if (currentPokemon[i]['types']['0']['type']['name'] == 'flying'){
+        typebgcolor1 = "lightblue !important";
+    }
+    if (currentPokemon[i]['types']['0']['type']['name'] == 'poison'){
+        typebgcolor1 = "#C8A2C8 !important";
+    }
+    
+    }
 function renderPokemoncardWithMultipleTypes(i) {
+createColoredTypeButton(i);
 
     document.getElementById('fullScreenCard').style.display = "flex";
     document.getElementById('fullScreenCard').innerHTML = `
@@ -146,7 +221,7 @@ function renderPokemoncardWithMultipleTypes(i) {
     <div id="typesection" class="types_section">
         <div class="show_types" id="showTypes">
 
-            Types: <p>${currentPokemon[i]['types']['0']['type']['name']} & ${currentPokemon[i]['types']['1']['type']['name']}</p>
+            Types: <p><span class="badge bg-secondary" style="background-color:${typebgcolor1}">${currentPokemon[i]['types']['0']['type']['name']}</span> & <span class="badge bg-secondary" style="background-color:${typebgcolor2}"> ${currentPokemon[i]['types']['1']['type']['name']}</span></p>
         </div>
     </div>
     <div id="abilitysection" class="abilitys_section">
@@ -168,6 +243,7 @@ Base Stats:
 }
 
 function renderPokemoncardWithOneType(i) {
+    createColoredTypeButtonsimple(i);
     document.getElementById('fullScreenCard').style.display = "flex";
     document.getElementById('fullScreenCard').innerHTML = `
     <div id="fullscreenCardSmall" class="fullscreen_card_small" ${backgroundColorCards}>
@@ -178,7 +254,7 @@ function renderPokemoncardWithOneType(i) {
     <div id="typesection" class="types_section">
         <div class="show_types" id="showTypes">
 
-            Types: <p>${currentPokemon[i]['types']['0']['type']['name']}</p>
+            Types: <p><span class="badge bg-secondary" style="background-color:${typebgcolor1}">${currentPokemon[i]['types']['0']['type']['name']}</span></p>
         </div>
     </div>
     <div id="abilitysection" class="abilitys_section">
@@ -309,4 +385,26 @@ function showLoadingScreen() {
 
 function endLoadingScreen() {
     document.getElementById('loading').style.display = "none";
+}
+
+
+
+let hovering = false;
+
+function startHoverEffect() {
+    if (!hovering) {
+        const card = document.querySelector('.main_card');
+        card.style.transform = 'perspective(400px) rotateY(365deg) scale(1.09)';
+        card.style.boxShadow = '0 0 20px rgba(255, 255, 255, 0.7)';
+        hovering = true;
+    }
+}
+
+function endHoverEffect() {
+    if (hovering) {
+        const card = document.querySelector('.main_card');
+        card.style.transform = '';
+        card.style.boxShadow = '';
+        hovering = false;
+    }
 }
