@@ -3,6 +3,7 @@ let allPokemon;
 let allPokemonNames = [];
 let allPokemonTypes = [];
 let backgroundColorCards = "";
+let pokemonLoadAmmount = 20;
 
 async function init() {
 
@@ -14,11 +15,21 @@ async function init() {
     endLoadingScreen();
 }
 async function loadAllPokemon() {
-    let url = 'https://pokeapi.co/api/v2/pokemon/?limit=151&offset=0';
+    let url = `https://pokeapi.co/api/v2/pokemon/?offset=0&limit=${pokemonLoadAmmount}`;
     let response = await fetch(url);
     allPokemon = await response.json();
 
     console.log('Loaded Pokemon', allPokemon);
+    document.getElementById('bodyMainCards').innerHTML = '';
+}
+function loadMorePkmn() {
+    pokemonLoadAmmount = pokemonLoadAmmount += 20;
+    currentPokemon = [];
+    allPokemon = [];
+    allPokemonNames = [];
+    allPokemonTypes = [];
+    backgroundColorCards = "";
+    init();
 }
 
 function loadAllPokemonNames() {
@@ -124,7 +135,7 @@ function createChart(i) {
 }
 
 function renderPokemoncardWithMultipleTypes(i) {
-    
+
     document.getElementById('fullScreenCard').style.display = "flex";
     document.getElementById('fullScreenCard').innerHTML = `
     <div id="fullscreenCardSmall" class="fullscreen_card_small" ${backgroundColorCards}>
@@ -209,6 +220,7 @@ async function loadPokemon() {
 }
 
 function renderPokemonInfo(i) {
+
     if (allPokemonTypes[i] == "grass") {
         addGrassType(i);
     }
