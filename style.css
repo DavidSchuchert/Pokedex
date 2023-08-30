@@ -103,7 +103,7 @@ h1 {
 
 h2 {
     text-transform: uppercase;
-    font-size: 24px;
+    font-size: 20px;
     padding-top: 16px;
 }
 
@@ -149,16 +149,23 @@ h2 {
 
 
 }
-
+.pkmnNameAndImg{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    max-width: 300px;
+    gap: 70px;
+    text-decoration: underline;
+}
 .fullscreen_card_small {
     height: 600px;
-    width: 400px;
+    width: 799px;
     background-color: #F3B34C;
     border: 8px solid rgb(238, 238, 0);
     border-radius: 16px;
     display: flex;
-    justify-content: center;
-    flex-direction: column;
+    justify-content: space-evenly;
+    flex-direction: row;
     align-items: center;
 }
 .fullscreen_card_small h2 {
@@ -168,11 +175,24 @@ font-weight: bold;
 .fullscreen_card_small img{
     height: 50%;
 }
+.pkmninfo{
+    text-align: center;
+    display: flex;
+    font-weight: bold;
+    text-transform: uppercase;
+    flex-direction: column;
+    gap: 8px;
+    padding-left: 8px;
+}
+
+.pkmninfo p{
+    font-weight: 100;
+}
 
 .line{
-    height: 1px;
-    width: 80%;
-    background-color: black;
+    height: 80%;
+    width: 1px;
+    background-color: grey;
 }
 
 .card_buttons{
@@ -182,15 +202,6 @@ font-weight: bold;
     gap: 8px;
 }
 
-.show_types{
-    display: flex;
-    justify-content: space-between;
-    gap: 32px;
-    padding-top: 14px;
-    font-weight: bold;
-    text-transform: uppercase;
-    font-family: 'Open Sans', sans-serif !important;
-}
 .btn-success{
     padding-left: 40px;
     padding-right: 40px;
