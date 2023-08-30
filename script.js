@@ -72,15 +72,7 @@ function changePokemonCardBackground(i) {
 function openPokemonCard(i) {
 
     changePokemonCardBackground(i);
-
-    if (currentPokemon[i]['types'].length > 1) {
-
-        renderPokemoncardWithMultipleTypes(i)
-
-    } else {
-        renderPokemoncardWithOneType(i);
-    }
-
+        renderPokemoncard(i)
 }
 
 function createChart(i) {
@@ -135,115 +127,87 @@ function createChart(i) {
         }
     });
 }
-function createColoredTypeButton(i){
+function createColoredTypeButton(i) {
 
-
-if (currentPokemon[i]['types']['0']['type']['name'] == 'grass'){
-    typebgcolor1 = "green !important";
-}
-if (currentPokemon[i]['types']['0']['type']['name'] == 'fire'){
-    typebgcolor1 = "red !important";
-}
-if (currentPokemon[i]['types']['0']['type']['name'] == 'water'){
-    typebgcolor1 = "blue !important";
-}
-if (currentPokemon[i]['types']['0']['type']['name'] == 'normal'){
-    typebgcolor1 = "grey !important";
-}
-if (currentPokemon[i]['types']['0']['type']['name'] == 'bug'){
-    typebgcolor1 = "lightgreen !important";
-}
-if (currentPokemon[i]['types']['0']['type']['name'] == 'flying'){
-    typebgcolor1 = "lightblue !important";
-}
-if (currentPokemon[i]['types']['0']['type']['name'] == 'poison'){
-    typebgcolor1 = "#C8A2C8 !important";
-}
-if (currentPokemon[i]['types']['1']['type']['name'] == 'grass'){
-    typebgcolor2 = "green !important";
-}
-if (currentPokemon[i]['types']['1']['type']['name'] == 'fire'){
-    typebgcolor2 = "red !important";
-}
-if (currentPokemon[i]['types']['1']['type']['name'] == 'water'){
-    typebgcolor2 = "blue !important";
-}
-if (currentPokemon[i]['types']['1']['type']['name'] == 'normal'){
-    typebgcolor2 = "grey !important";
-}
-if (currentPokemon[i]['types']['1']['type']['name'] == 'bug'){
-    typebgcolor2 = "lightgreen !important";
-}
-if (currentPokemon[i]['types']['1']['type']['name'] == 'flying'){
-    typebgcolor2 = "lightblue !important";
-}
-if (currentPokemon[i]['types']['1']['type']['name'] == 'poison'){
-    typebgcolor2 = "#C8A2C8 !important";
-}
-
-}
-function createColoredTypeButtonsimple(i){
-
-
-    if (currentPokemon[i]['types']['0']['type']['name'] == 'grass'){
+if (currentPokemon[i]['types'].length == 1){
+    if (currentPokemon[i]['types']['0']['type']['name'] == 'grass') {
         typebgcolor1 = "green !important";
     }
-    if (currentPokemon[i]['types']['0']['type']['name'] == 'fire'){
+    if (currentPokemon[i]['types']['0']['type']['name'] == 'fire') {
         typebgcolor1 = "red !important";
     }
-    if (currentPokemon[i]['types']['0']['type']['name'] == 'water'){
+    if (currentPokemon[i]['types']['0']['type']['name'] == 'water') {
         typebgcolor1 = "blue !important";
     }
-    if (currentPokemon[i]['types']['0']['type']['name'] == 'normal'){
+    if (currentPokemon[i]['types']['0']['type']['name'] == 'normal') {
         typebgcolor1 = "grey !important";
     }
-    if (currentPokemon[i]['types']['0']['type']['name'] == 'bug'){
+    if (currentPokemon[i]['types']['0']['type']['name'] == 'bug') {
         typebgcolor1 = "lightgreen !important";
     }
-    if (currentPokemon[i]['types']['0']['type']['name'] == 'flying'){
+    if (currentPokemon[i]['types']['0']['type']['name'] == 'flying') {
         typebgcolor1 = "lightblue !important";
     }
-    if (currentPokemon[i]['types']['0']['type']['name'] == 'poison'){
+    if (currentPokemon[i]['types']['0']['type']['name'] == 'poison') {
         typebgcolor1 = "#C8A2C8 !important";
     }
-    
+}
+if (currentPokemon[i]['types'].length == 2){
+    if (currentPokemon[i]['types']['0']['type']['name'] == 'grass') {
+        typebgcolor1 = "green !important";
     }
-function renderPokemoncardWithMultipleTypes(i) {
-createColoredTypeButton(i);
-
-    document.getElementById('fullScreenCard').style.display = "flex";
-    document.getElementById('fullScreenCard').innerHTML = `
-    <div id="fullscreenCardSmall" class="fullscreen_card_small" ${backgroundColorCards}>
-    <div class="pkmnNameAndImg"> <h2>${currentPokemon[i]['name']}</h2>
-    <img src="${currentPokemon[i]['sprites']['other']['official-artwork']['front_default']}" alt=""></div>
-    <div class="line"></div>
-    <div class="pkmninfo">
-    <div id="typesection" class="types_section">
-        <div class="show_types" id="showTypes">
-
-            Types: <p><span class="badge bg-secondary" style="background-color:${typebgcolor1}">${currentPokemon[i]['types']['0']['type']['name']}</span> & <span class="badge bg-secondary" style="background-color:${typebgcolor2}"> ${currentPokemon[i]['types']['1']['type']['name']}</span></p>
-        </div>
-    </div>
-    <div id="abilitysection" class="abilitys_section">
-        <div class="show_abilitys" id="showTypes">
-            Start Abilities: <p>${currentPokemon[i]['abilities']['0']['ability']['name']} & ${currentPokemon[i]['abilities']['1']['ability']['name']}</p>
-        </div>
-    </div>
-
-    <div id="statssection" class="stats_section">
-        <div class="show_stats" id="showTypes">
-Base Stats:
-        <canvas id="myChart"></canvas>
-        </div>
-    </div>
-</div>
-    </div>
-    `
-    createChart(i);
+    if (currentPokemon[i]['types']['0']['type']['name'] == 'fire') {
+        typebgcolor1 = "red !important";
+    }
+    if (currentPokemon[i]['types']['0']['type']['name'] == 'water') {
+        typebgcolor1 = "blue !important";
+    }
+    if (currentPokemon[i]['types']['0']['type']['name'] == 'normal') {
+        typebgcolor1 = "grey !important";
+    }
+    if (currentPokemon[i]['types']['0']['type']['name'] == 'bug') {
+        typebgcolor1 = "lightgreen !important";
+    }
+    if (currentPokemon[i]['types']['0']['type']['name'] == 'flying') {
+        typebgcolor1 = "lightblue !important";
+    }
+    if (currentPokemon[i]['types']['0']['type']['name'] == 'poison') {
+        typebgcolor1 = "#C8A2C8 !important";
+    }
+    if (currentPokemon[i]['types']['1']['type']['name'] == 'grass') {
+        typebgcolor2 = "green !important";
+    }
+    if (currentPokemon[i]['types']['1']['type']['name'] == 'fire') {
+        typebgcolor2 = "red !important";
+    }
+    if (currentPokemon[i]['types']['1']['type']['name'] == 'water') {
+        typebgcolor2 = "blue !important";
+    }
+    if (currentPokemon[i]['types']['1']['type']['name'] == 'normal') {
+        typebgcolor2 = "grey !important";
+    }
+    if (currentPokemon[i]['types']['1']['type']['name'] == 'bug') {
+        typebgcolor2 = "lightgreen !important";
+    }
+    if (currentPokemon[i]['types']['1']['type']['name'] == 'flying') {
+        typebgcolor2 = "lightblue !important";
+    }
+    if (currentPokemon[i]['types']['1']['type']['name'] == 'poison') {
+        typebgcolor2 = "#C8A2C8 !important";
+    }
+}
+}
+function renderPokemoncard(i) {
+if (currentPokemon[i]['types'].length == 1){
+    addtypes = `<span class="badge bg-secondary" style="background-color:${typebgcolor1}">${currentPokemon[i]['types']['0']['type']['name']}</span>`;
+}
+if (currentPokemon[i]['types'].length == 2){
+    addtypes = `<span class="badge bg-secondary" style="background-color:${typebgcolor1}">${currentPokemon[i]['types']['0']['type']['name']}</span> & <span class="badge bg-secondary" style="background-color:${typebgcolor2}"> ${currentPokemon[i]['types']['1']['type']['name']}</span>`;
 }
 
-function renderPokemoncardWithOneType(i) {
-    createColoredTypeButtonsimple(i);
+   
+   currentPokemon[i]['types'].length
+
     document.getElementById('fullScreenCard').style.display = "flex";
     document.getElementById('fullScreenCard').innerHTML = `
     <div id="fullscreenCardSmall" class="fullscreen_card_small" ${backgroundColorCards}>
@@ -254,7 +218,7 @@ function renderPokemoncardWithOneType(i) {
     <div id="typesection" class="types_section">
         <div class="show_types" id="showTypes">
 
-            Types: <p><span class="badge bg-secondary" style="background-color:${typebgcolor1}">${currentPokemon[i]['types']['0']['type']['name']}</span></p>
+            Types: <p>${addtypes}</p>
         </div>
     </div>
     <div id="abilitysection" class="abilitys_section">
@@ -273,6 +237,7 @@ Base Stats:
     </div>
     `
     createChart(i);
+    createColoredTypeButton(i);
 }
 
 function closePokemonCard() {
@@ -296,87 +261,37 @@ async function loadPokemon() {
 }
 
 function renderPokemonInfo(i) {
+    let pokeInfoBgColor = "";
 
     if (allPokemonTypes[i] == "grass") {
-        addGrassType(i);
+        pokeInfoBgColor = "#4cc94c";
     }
 
     if (allPokemonTypes[i] == "fire") {
-        addFireType(i);
+        pokeInfoBgColor = "#F3B34C";
     }
 
     if (allPokemonTypes[i] == "water") {
-        addWaterType(i);
+        pokeInfoBgColor = "lightblue";
     }
 
     if (allPokemonTypes[i] == "bug") {
-        addBugType(i);
+        pokeInfoBgColor = "lightgreen";
     }
 
     if (allPokemonTypes[i] == "normal") {
-        addNormalType(i);
+        pokeInfoBgColor = "gray";
     }
 
-
-
-
-    /*         document.getElementById('PokemonName').innerHTML += currentPokemon[i]['name'];
-            document.getElementById('pokemon_img').src += currentPokemon[i]['sprites']['other']['official-artwork']['front_default']; */
-}
-
-function addGrassType(i) {
     document.getElementById('bodyMainCards').innerHTML += `
-    <div onclick="openPokemonCard(${(i)})" class="main_card" id="main_card" style="background-color: #4cc94c">
+    <div onclick="openPokemonCard(${(i)})" class="main_card" id="main_card" style="background-color: ${pokeInfoBgColor}">
     <div class="pokemon_card" id="pokemonCard">
     <h2 id="PokemonName"> #${[i + 1]}  ${currentPokemon[i]['name']}</h2>
     <img class="pokemon_img" id="pokemon_img" src="${currentPokemon[i]['sprites']['other']['official-artwork']['front_default']}" alt=""> 
     </div>
     </div>
     `
-}
 
-function addFireType(i) {
-    document.getElementById('bodyMainCards').innerHTML += `
-    <div  onclick="openPokemonCard(${(i)})" class="main_card" id="main_card" style="background-color: #F3B34C">
-    <div class="pokemon_card" id="pokemonCard">
-    <h2 id="PokemonName"> #${[i + 1]}  ${currentPokemon[i]['name']}</h2>
-    <img class="pokemon_img" id="pokemon_img" src="${currentPokemon[i]['sprites']['other']['official-artwork']['front_default']}" alt=""> 
-    </div>
-    </div>
-    `
-}
-
-function addWaterType(i) {
-    document.getElementById('bodyMainCards').innerHTML += `
-    <div  onclick="openPokemonCard(${(i)})" class="main_card" id="main_card" style="background-color: lightblue">
-    <div class="pokemon_card" id="pokemonCard">
-    <h2 id="PokemonName"> #${[i + 1]}  ${currentPokemon[i]['name']}</h2>
-    <img class="pokemon_img" id="pokemon_img" src="${currentPokemon[i]['sprites']['other']['official-artwork']['front_default']}" alt=""> 
-    </div>
-    </div>
-    `
-}
-
-function addBugType(i) {
-    document.getElementById('bodyMainCards').innerHTML += `
-    <div  onclick="openPokemonCard(${(i)})" class="main_card" id="main_card" style="background-color: lightgreen">
-    <div class="pokemon_card" id="pokemonCard">
-    <h2 id="PokemonName"> #${[i + 1]}  ${currentPokemon[i]['name']}</h2>
-    <img class="pokemon_img" id="pokemon_img" src="${currentPokemon[i]['sprites']['other']['official-artwork']['front_default']}" alt=""> 
-    </div>
-    </div>
-    `
-}
-
-function addNormalType(i) {
-    document.getElementById('bodyMainCards').innerHTML += `
-    <div  onclick="openPokemonCard(${(i)})" class="main_card" id="main_card" style="background-color: gray">
-    <div class="pokemon_card" id="pokemonCard">
-    <h2 id="PokemonName"> #${[i + 1]}  ${currentPokemon[i]['name']}</h2>
-    <img class="pokemon_img" id="pokemon_img" src="${currentPokemon[i]['sprites']['other']['official-artwork']['front_default']}" alt=""> 
-    </div>
-    </div>
-    `
 }
 
 function showLoadingScreen() {
@@ -385,26 +300,4 @@ function showLoadingScreen() {
 
 function endLoadingScreen() {
     document.getElementById('loading').style.display = "none";
-}
-
-
-
-let hovering = false;
-
-function startHoverEffect() {
-    if (!hovering) {
-        const card = document.querySelector('.main_card');
-        card.style.transform = 'perspective(400px) rotateY(365deg) scale(1.09)';
-        card.style.boxShadow = '0 0 20px rgba(255, 255, 255, 0.7)';
-        hovering = true;
-    }
-}
-
-function endHoverEffect() {
-    if (hovering) {
-        const card = document.querySelector('.main_card');
-        card.style.transform = '';
-        card.style.boxShadow = '';
-        hovering = false;
-    }
 }
