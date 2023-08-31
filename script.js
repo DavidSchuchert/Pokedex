@@ -562,8 +562,12 @@ function renderPokemonInfo(i) {
   document.getElementById("bodyMainCards").innerHTML += `
   <div onclick="openPokemonCard(${i})" class="main_card" id="main_card" style="background-color: ${pokeInfoBgColor}">
   <div class="pokemon_card" id="pokemonCard">
-     <h2 id="PokemonName">#${[i+1]} ${currentPokemon[i]["name"]}</h2>
-     <img class="pokemon_img" id="pokemon_img" src="${currentPokemon[i]["sprites"]["other"]["official-artwork"]["front_default"]}" alt=""> 
+     <h2 id="PokemonName">#${[i + 1]} ${currentPokemon[i]["name"]}</h2>
+     <img class="pokemon_img" id="pokemon_img" src="${
+       currentPokemon[i]["sprites"]["other"]["official-artwork"][
+         "front_default"
+       ]
+     }" alt=""> 
   </div>
 </div>
     `;
