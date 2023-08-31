@@ -1,5 +1,6 @@
 let currentPokemon = [];
-let allPokemon;
+let allPokemon = [];
+let newPokemon = [];
 let allPokemonNames = [];
 let allPokemonTypes = [];
 let backgroundColorCards = "";
@@ -16,7 +17,7 @@ let backgroundColorCardsleft = "";
 async function init() {
   hideLoadMoreButton();
   await loadAllPokemon();
-  loadAllPokemonNames();
+  await loadAllPokemonNames();
   showLoadingScreen();
   await loadPokemon();
   await loadAllPokemonTypes();
@@ -25,28 +26,30 @@ async function init() {
 async function loadAllPokemon() {
   let url = `https://pokeapi.co/api/v2/pokemon/?offset=${pokemonoffset}&limit=${pokemonLoadAmmount}`;
   let response = await fetch(url);
-  allPokemon = await response.json();
-
+  newPokemon = await response.json();
+  for (let i = 0; i < newPokemon.results.length; i++) {
+    await allPokemon.push(newPokemon.results[i]);
+  }
   console.log("Loaded Pokemon", allPokemon);
 }
 function loadMorePkmn() {
   pokemonoffset = pokemonoffset += 20;
-  currentPokemon = [];
+  /*   currentPokemon = [];
   allPokemon = [];
   allPokemonNames = [];
   allPokemonTypes = [];
-  backgroundColorCards = "";
+  backgroundColorCards = ""; */
   init();
 }
 
 function loadAllPokemonNames() {
-  for (let i = 0; i < allPokemon["results"].length; i++) {
-    allPokemonNames.push(allPokemon["results"][i]["name"]);
+  for (let i = 0 + pokemonoffset; i < allPokemon.length; i++) {
+    allPokemonNames.push(allPokemon[i]["name"]);
   }
 }
 
 function loadAllPokemonTypes() {
-  for (let i = 0; i < allPokemon["results"].length; i++) {
+  for (let i = 0 + pokemonoffset; i < allPokemon.length; i++) {
     allPokemonTypes.push(currentPokemon[i]["types"]["0"]["type"]["name"]);
     renderPokemonInfo(i);
   }
@@ -498,7 +501,7 @@ function closePokemonCard() {
 }
 
 async function loadPokemon() {
-  for (let i = 0; i < allPokemonNames.length; i++) {
+  for (let i = 0 + pokemonoffset; i < allPokemonNames.length; i++) {
     let pokemon = allPokemonNames[i];
 
     let url = `https://pokeapi.co/api/v2/pokemon/${pokemon}`;
@@ -560,11 +563,7 @@ function renderPokemonInfo(i) {
   <div onclick="openPokemonCard(${i})" class="main_card" id="main_card" style="background-color: ${pokeInfoBgColor}">
   <div class="pokemon_card" id="pokemonCard">
      <h2 id="PokemonName"> ${currentPokemon[i]["name"]}</h2>
-     <img class="pokemon_img" id="pokemon_img" src="${
-       currentPokemon[i]["sprites"]["other"]["official-artwork"][
-         "front_default"
-       ]
-     }" alt=""> 
+     <img class="pokemon_img" id="pokemon_img" src="${currentPokemon[i]["sprites"]["other"]["official-artwork"]["front_default"]}" alt=""> 
   </div>
 </div>
     `;
