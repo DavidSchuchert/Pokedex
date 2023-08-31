@@ -171,25 +171,31 @@ function changePokemonCardBackgroundLeft(i) {
       'style="background-image: url(./img/normal.jpeg);"';
   }
   if (allPokemonTypes[i - 1] == "poison") {
-    backgroundColorCardsleft = 'style="background-image: url(./img/poison.jpg);"';
+    backgroundColorCardsleft =
+      'style="background-image: url(./img/poison.jpg);"';
   }
   if (allPokemonTypes[i - 1] == "ground") {
-    backgroundColorCardsleft = 'style="background-image: url(./img/ground.jpg);"';
+    backgroundColorCardsleft =
+      'style="background-image: url(./img/ground.jpg);"';
   }
   if (allPokemonTypes[i - 1] == "fairy") {
-    backgroundColorCardsleft = 'style="background-image: url(./img/fairy.jpg);"';
+    backgroundColorCardsleft =
+      'style="background-image: url(./img/fairy.jpg);"';
   }
   if (allPokemonTypes[i - 1] == "psychic") {
     backgroundColorCardsleft = 'style="background-image: url(psychic.jpg);"';
   }
   if (allPokemonTypes[i - 1] == "fighting") {
-    backgroundColorCardsleft = 'style="background-image: url(./img/fighting.jpg);"';
+    backgroundColorCardsleft =
+      'style="background-image: url(./img/fighting.jpg);"';
   }
   if (allPokemonTypes[i - 1] == "ghost") {
-    backgroundColorCardsleft = 'style="background-image: url(./img/ghost.jpg);"';
+    backgroundColorCardsleft =
+      'style="background-image: url(./img/ghost.jpg);"';
   }
   if (allPokemonTypes[i - 1] == "electric") {
-    backgroundColorCardsleft = 'style="background-image: url(./img/electric.jpg);"';
+    backgroundColorCardsleft =
+      'style="background-image: url(./img/electric.jpg);"';
   }
   if (allPokemonTypes[i - 1] == "rock") {
     backgroundColorCardsleft = 'style="background-image: url(./img/rock.jpg);"';
