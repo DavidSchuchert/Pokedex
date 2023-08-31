@@ -465,10 +465,13 @@ async function renderPokemoncard(i) {
   </div>
   <div class="line"></div>
   <div class="pkmninfo">
+  
      <div id="typesection" class="types_section">
         <div class="show_types" id="showTypes">
+        <div class="pkmn_img_mediaquery" > ${currentPokemon[i]["name"]} <img src="${currentPokemon[i]["sprites"]["other"]["official-artwork"]["front_default"]}" style="display: none;"></div>
            Types: 
            <p>${addtypes}</p>
+           
         </div>
      </div>
      <div id="abilitysection" class="abilitys_section">
