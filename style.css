@@ -291,7 +291,7 @@ h2 {
 .pokemonright{
     max-width: 200px;
     background-color: white;
-    border: 7px solid #EEEE00;
+    border: 2px solid #EEEE00;
     border-radius: 50%;
     aspect-ratio: 1/1;
     margin-left: 16px;
@@ -308,7 +308,7 @@ h2 {
     max-width: 200px;
     aspect-ratio: 1/1;
     background-color: white;
-    border: 7px solid #EEEE00;
+    border: 2px solid #EEEE00;
     border-radius: 50%;
     
 }
