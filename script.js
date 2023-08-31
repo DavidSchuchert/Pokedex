@@ -28,7 +28,6 @@ async function loadAllPokemon() {
   allPokemon = await response.json();
 
   console.log("Loaded Pokemon", allPokemon);
-  /* document.getElementById("bodyMainCards").innerHTML = ""; */
 }
 function loadMorePkmn() {
   pokemonLoadAmmount = pokemonLoadAmmount += 20;
@@ -39,8 +38,8 @@ function loadMorePkmn() {
   allPokemonTypes = [];
   backgroundColorCards = "";
   init();
-  let scrollingElement = document.scrollingElement || document.body;
-  scrollingElement.scrollTop = scrollingElement.scrollHeight;
+/*   let scrollingElement = document.scrollingElement || document.body;
+  scrollingElement.scrollTop = scrollingElement.scrollHeight; */
 }
 
 function loadAllPokemonNames() {
