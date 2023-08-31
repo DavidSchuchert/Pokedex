@@ -6,7 +6,7 @@ body {
 h1 {
     margin-block-start: 0;
     margin-block-end: 0;
-/*     font-family: 'Rubik Iso', cursive; */
+    /*     font-family: 'Rubik Iso', cursive; */
     color: white;
     font-size: 72px;
 }
@@ -116,12 +116,15 @@ h2 {
     justify-content: center;
     height: 100%;
 }
-.inputsearch{
+
+.inputsearch {
     border-radius: 5px;
 }
-.header_left{
-    display:flex;
+
+.header_left {
+    display: flex;
 }
+
 .main_card {
     background-color: #F3B34C;
     max-height: 300px;
@@ -380,6 +383,20 @@ h2 {
         width: 200px;
         height: 200px;
     }
+
+    .container-fluid {
+        flex-direction: column;
+        padding-top: 8px;
+    }
+
+    h1 {
+        font-size: 40px;
+    }
+
+    .logo_img {
+        height: 40px;
+        width: 40px;
+    }
 }
 
 @media(max-width: 670px) {
@@ -444,10 +461,6 @@ h2 {
     .logo_img {
         height: 40px;
         width: 40px;
-    }
-
-    .container-fluid {
-        height: 75px !important;
     }
 
     .pokemonright img {

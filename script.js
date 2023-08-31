@@ -587,11 +587,12 @@ function hideLoadMoreButton() {
   document.getElementById("loadMorePkmn").style.display = "none";
 }
 
-
 function searchPokemon() {
   let searchTerm = document.getElementById("inputsearch").value.toLowerCase();
-  
-  let matchingPokemonIndex = allPokemonNames.findIndex(pokemonName => pokemonName.toLowerCase() === searchTerm);
+
+  let matchingPokemonIndex = allPokemonNames.findIndex(
+    (pokemonName) => pokemonName.toLowerCase() === searchTerm
+  );
 
   if (matchingPokemonIndex !== -1) {
     openPokemonCard(matchingPokemonIndex);
@@ -605,7 +606,7 @@ function updateMainCardList(filteredIndexes) {
   let mainCardContainer = document.getElementById("bodyMainCards");
   mainCardContainer.innerHTML = "";
 
-  filteredIndexes.forEach(index => {
+  filteredIndexes.forEach((index) => {
     renderPokemonInfo(index);
   });
 }
@@ -619,12 +620,15 @@ function handleSearchInput(inputElement) {
 
   if (searchTerm.length >= 3) {
     searchTimeout = setTimeout(() => {
-      let matchingPokemonIndexes = allPokemonNames.reduce((acc, pokemonName, index) => {
-        if (pokemonName.toLowerCase().startsWith(searchTerm)) {
-          acc.push(index);
-        }
-        return acc;
-      }, []);
+      let matchingPokemonIndexes = allPokemonNames.reduce(
+        (acc, pokemonName, index) => {
+          if (pokemonName.toLowerCase().startsWith(searchTerm)) {
+            acc.push(index);
+          }
+          return acc;
+        },
+        []
+      );
 
       updateMainCardList(matchingPokemonIndexes);
     }, 300);
