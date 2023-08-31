@@ -13,6 +13,7 @@ let backgroundColorCardsright = "";
 let backgroundColorCardsleft = "";
 
 async function init() {
+  hideLoadMoreButton();
   await loadAllPokemon();
   loadAllPokemonNames();
   showLoadingScreen();
@@ -36,6 +37,8 @@ function loadMorePkmn() {
   allPokemonTypes = [];
   backgroundColorCards = "";
   init();
+  let scrollingElement = document.scrollingElement || document.body;
+  scrollingElement.scrollTop = scrollingElement.scrollHeight;
 }
 
 function loadAllPokemonNames() {
@@ -568,10 +571,14 @@ function renderPokemonInfo(i) {
 
 function showLoadingScreen() {
   document.getElementById("loading").style.display = "flex";
-  document.getElementById("loadMorePkmn").style.display ="none";
+  document.getElementById("loadMorePkmn").style.display = "none";
 }
 
 function endLoadingScreen() {
   document.getElementById("loading").style.display = "none";
-  document.getElementById("loadMorePkmn").style.display ="inline-block";
+  document.getElementById("loadMorePkmn").style.display = "inline-block";
+}
+
+function hideLoadMoreButton() {
+  document.getElementById("loadMorePkmn").style.display = "none";
 }
