@@ -7,6 +7,11 @@ let pokemonLoadAmmount = 20;
 let typebgcolor1 = "";
 let typebgcolor2 = "";
 let addAbilities = ``;
+let pokemonleft = ''; 
+let pokemonright = '';
+let backgroundColorCardsright = '';
+let backgroundColorCardsleft = '';
+
 
 async function init() {
   await loadAllPokemon();
@@ -66,6 +71,46 @@ function changePokemonCardBackground(i) {
     backgroundColorCards = 'style="background-image: url(./img/normal.jpeg);"';
   }
 }
+function changePokemonCardBackgroundRight(i) {
+  if (allPokemonTypes[i+1] == "grass") {
+    backgroundColorCardsright = 'style="background-image: url(./img/field.webp);"';
+  }
+
+  if (allPokemonTypes[i+1] == "fire") {
+    backgroundColorCardsright = 'style="background-image: url(./img/fire.jpg);"';
+  }
+  if (allPokemonTypes[i+1] == "water") {
+    backgroundColorCardsright = 'style="background-image: url(./img/water.avif);"';
+  }
+  if (allPokemonTypes[i+1] == "bug") {
+    backgroundColorCardsright = 'style="background-image: url(./img/bug.jpeg);"';
+  }
+
+  if (allPokemonTypes[i+1] == "normal") {
+    backgroundColorCardsright = 'style="background-image: url(./img/normal.jpeg);"';
+  }
+}
+
+function changePokemonCardBackgroundLeft(i) {
+  if (allPokemonTypes[i-1] == "grass") {
+    backgroundColorCardsleft = 'style="background-image: url(./img/field.webp);"';
+  }
+
+  if (allPokemonTypes[i-1] == "fire") {
+    backgroundColorCardsleft = 'style="background-image: url(./img/fire.jpg);"';
+  }
+  if (allPokemonTypes[i-1] == "water") {
+    backgroundColorCardsleft = 'style="background-image: url(./img/water.avif);"';
+  }
+  if (allPokemonTypes[i-1] == "bug") {
+    backgroundColorCardsleft = 'style="background-image: url(./img/bug.jpeg);"';
+  }
+
+  if (allPokemonTypes[i-1] == "normal") {
+    backgroundColorCardsleft = 'style="background-image: url(./img/normal.jpeg);"';
+  }
+}
+
 
 function openPokemonCard(i) {
   changePokemonCardBackground(i);
@@ -213,14 +258,31 @@ function pokeInformationRequest(i) {
     addAbilities = `${currentPokemon[i]["abilities"]["0"]["ability"]["name"]} & ${currentPokemon[i]["abilities"]["1"]["ability"]["name"]} `;
   }
 }
+function Pokemonchange(i){
+ 
+  if (currentPokemon[i - 1] && currentPokemon[i - 1]["sprites"]["other"]["official-artwork"]["front_default"])
+  {
+    changePokemonCardBackgroundLeft(i)
+    pokemonleft = `<div onclick="stop(event);openPokemonCard(${i -1});" class="pokemonleft" ${backgroundColorCardsleft}><img class="pokecardimg" src="${currentPokemon[i-1]["sprites"]["other"]["official-artwork"]["front_default"]}" alt=""> </div>`
+  }
+  if (currentPokemon[i + 1] && currentPokemon[i + 1]["sprites"]["other"]["official-artwork"]["front_default"])
+  {
+    changePokemonCardBackgroundRight(i);
+    pokemonright= `<div onclick="stop(event);openPokemonCard(${i +1});" class="pokemonright" ${backgroundColorCardsright}><img class="pokecardimg" src="${currentPokemon[i+1]["sprites"]["other"]["official-artwork"]["front_default"]}" alt=""> </div>`
+  }
+}
 async function renderPokemoncard(i) {
+  await createColoredTypeButton(i);
   await pokeInformationRequest(i);
+await Pokemonchange(i);
 
   currentPokemon[i]["types"].length;
-
+  document.getElementById("fullScreenCard").innerHTML = ``;
   document.getElementById("fullScreenCard").style.display = "flex";
   document.getElementById("fullScreenCard").innerHTML = `
+  ${pokemonleft}
   <div id="fullscreenCardSmall" class="fullscreen_card_small" ${backgroundColorCards}>
+  
   <div class="pkmnNameAndImg">
      <h2>${currentPokemon[i]["name"]}</h2>
      <img class="pokecardimg" src="${currentPokemon[i]["sprites"]["other"]["official-artwork"]["front_default"]}" alt="">
@@ -247,11 +309,14 @@ async function renderPokemoncard(i) {
      </div>
   </div>
   </div>
+  ${pokemonright}
   `;
   createChart(i);
-  createColoredTypeButton(i);
-}
 
+}
+function stop(event){
+  event.stopPropagation();
+}
 function closePokemonCard() {
   document.getElementById("fullScreenCard").style.display = "none";
 }

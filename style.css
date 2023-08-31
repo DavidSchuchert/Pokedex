@@ -287,3 +287,32 @@ h2 {
 		transform:         translateY(-15px)
 	}
 }
+
+.pokemonright{
+    max-width: 200px;
+    background-color: white;
+    border: 7px solid #EEEE00;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    margin-left: 16px;
+    
+}
+.pokemonright img {
+    width: 185px;
+    padding: 8px;
+}
+
+
+.pokemonleft{
+    margin-right: 16px;
+    max-width: 200px;
+    aspect-ratio: 1/1;
+    background-color: white;
+    border: 7px solid #EEEE00;
+    border-radius: 50%;
+    
+}
+.pokemonleft img {
+    width: 185px;
+    padding: 8px;
+}
