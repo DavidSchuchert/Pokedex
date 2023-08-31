@@ -334,7 +334,8 @@ h2 {
     width: 185px;
     padding: 8px;
 }
-.pkmn_img_mediaquery img{
+
+.pkmn_img_mediaquery img {
     width: 60px;
 }
 
@@ -364,27 +365,38 @@ h2 {
     .main_card {
         width: 248px;
     }
+
+    .loading img {
+        margin-top: -100px;
+        margin-left: -100px;
+        width: 200px;
+        height: 200px;
+    }
 }
 
 @media(max-width: 670px) {
-.pkmnNameAndImg{
-    display:none;
-}
-.line{
-    display:none;
-}
-.pkmninfo{
-    margin-left: 0;
-}
-.pkmn_img_mediaquery img{
-    display:flex !important;
-}
-.pkmn_img_mediaquery{
-display:flex;
-align-items: center;
-justify-content: space-evenly;
-font-size: 24px;
-}
+    .pkmnNameAndImg {
+        display: none;
+    }
+
+    .line {
+        display: none;
+    }
+
+    .pkmninfo {
+        margin-left: 0;
+    }
+
+    .pkmn_img_mediaquery img {
+        display: flex !important;
+    }
+
+    .pkmn_img_mediaquery {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        font-size: 24px;
+    }
 }
 
 @media(max-width: 600px) {
@@ -401,7 +413,8 @@ font-size: 24px;
         width: 374px;
         max-height: 423px;
     }
-    .main_card:hover{
+
+    .main_card:hover {
         transform: none;
     }
 }
@@ -410,8 +423,14 @@ font-size: 24px;
     h1 {
         font-size: 40px;
     }
-    h2{
+
+    h2 {
         font-size: 16px;
+    }
+
+    .myChart {
+        height: 255px !important;
+
     }
 
     .logo_img {
@@ -422,6 +441,7 @@ font-size: 24px;
     .container-fluid {
         height: 75px !important;
     }
+
     .pokemonright img {
         width: 60px;
     }
@@ -429,6 +449,7 @@ font-size: 24px;
     .pokemonleft img {
         width: 60px;
     }
+
     .pokecardimg:hover {
         animation: none;
         webkit-animation-duration: 0s;

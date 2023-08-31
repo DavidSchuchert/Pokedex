@@ -4,6 +4,7 @@ let allPokemonNames = [];
 let allPokemonTypes = [];
 let backgroundColorCards = "";
 let pokemonLoadAmmount = 20;
+let pokemonoffset = 0;
 let typebgcolor1 = "";
 let typebgcolor2 = "";
 let addAbilities = ``;
@@ -22,15 +23,16 @@ async function init() {
   endLoadingScreen();
 }
 async function loadAllPokemon() {
-  let url = `https://pokeapi.co/api/v2/pokemon/?offset=0&limit=${pokemonLoadAmmount}`;
+  let url = `https://pokeapi.co/api/v2/pokemon/?offset=${pokemonoffset}&limit=${pokemonLoadAmmount}`;
   let response = await fetch(url);
   allPokemon = await response.json();
 
   console.log("Loaded Pokemon", allPokemon);
-  document.getElementById("bodyMainCards").innerHTML = "";
+  /* document.getElementById("bodyMainCards").innerHTML = ""; */
 }
 function loadMorePkmn() {
   pokemonLoadAmmount = pokemonLoadAmmount += 20;
+  pokemonoffset = pokemonoffset += 20;
   currentPokemon = [];
   allPokemon = [];
   allPokemonNames = [];
@@ -483,7 +485,7 @@ async function renderPokemoncard(i) {
      <div id="statssection" class="stats_section">
         <div class="show_stats" id="showTypes">
            Base Stats:
-           <canvas id="myChart"></canvas>
+           <canvas class="myChart" id="myChart"></canvas>
         </div>
      </div>
   </div>
@@ -561,7 +563,7 @@ function renderPokemonInfo(i) {
   document.getElementById("bodyMainCards").innerHTML += `
   <div onclick="openPokemonCard(${i})" class="main_card" id="main_card" style="background-color: ${pokeInfoBgColor}">
   <div class="pokemon_card" id="pokemonCard">
-     <h2 id="PokemonName"> #${[i + 1]}  ${currentPokemon[i]["name"]}</h2>
+     <h2 id="PokemonName"> ${currentPokemon[i]["name"]}</h2>
      <img class="pokemon_img" id="pokemon_img" src="${
        currentPokemon[i]["sprites"]["other"]["official-artwork"][
          "front_default"
