@@ -212,7 +212,7 @@ function openPokemonCard(i) {
 }
 
 function createChart(i) {
-  const ctx = document.getElementById("myChart");
+  let ctx = document.getElementById("myChart");
 
   let hp = currentPokemon[i]["stats"]["0"]["base_stat"];
   let attack = currentPokemon[i]["stats"]["1"]["base_stat"];
@@ -585,4 +585,50 @@ function endLoadingScreen() {
 
 function hideLoadMoreButton() {
   document.getElementById("loadMorePkmn").style.display = "none";
+}
+
+
+function searchPokemon() {
+  let searchTerm = document.getElementById("inputsearch").value.toLowerCase();
+  
+  let matchingPokemonIndex = allPokemonNames.findIndex(pokemonName => pokemonName.toLowerCase() === searchTerm);
+
+  if (matchingPokemonIndex !== -1) {
+    openPokemonCard(matchingPokemonIndex);
+    updateMainCardList([matchingPokemonIndex]);
+  } else {
+    alert("Pokémon not found.");
+  }
+}
+
+function updateMainCardList(filteredIndexes) {
+  let mainCardContainer = document.getElementById("bodyMainCards");
+  mainCardContainer.innerHTML = "";
+
+  filteredIndexes.forEach(index => {
+    renderPokemonInfo(index);
+  });
+}
+
+let searchTimeout;
+
+function handleSearchInput(inputElement) {
+  clearTimeout(searchTimeout);
+
+  let searchTerm = inputElement.value.trim().toLowerCase();
+
+  if (searchTerm.length >= 3) {
+    searchTimeout = setTimeout(() => {
+      let matchingPokemonIndexes = allPokemonNames.reduce((acc, pokemonName, index) => {
+        if (pokemonName.toLowerCase().startsWith(searchTerm)) {
+          acc.push(index);
+        }
+        return acc;
+      }, []);
+
+      updateMainCardList(matchingPokemonIndexes);
+    }, 300);
+  } else {
+    updateMainCardList(allPokemonNames.map((_, index) => index));
+  }
 }

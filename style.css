@@ -20,7 +20,7 @@ h1 {
 
 .container-fluid {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly !important;
     align-items: center;
     height: 100px !important;
     background-color: red;
@@ -96,7 +96,9 @@ h1 {
 
 .container-fluid {
     display: flex;
-    justify-content: center !important;
+    padding-left: 48px;
+    padding-right: 48px;
+    justify-content: space-between !important;
     flex-wrap: nowrap !important;
     display: flex;
     align-items: center;
@@ -112,8 +114,14 @@ h2 {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    height: 100%;
 }
-
+.inputsearch{
+    border-radius: 5px;
+}
+.header_left{
+    display:flex;
+}
 .main_card {
     background-color: #F3B34C;
     max-height: 300px;
