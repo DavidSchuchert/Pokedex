@@ -568,8 +568,10 @@ function renderPokemonInfo(i) {
 
 function showLoadingScreen() {
   document.getElementById("loading").style.display = "flex";
+  document.getElementById("loadMorePkmn").style.display ="none";
 }
 
 function endLoadingScreen() {
   document.getElementById("loading").style.display = "none";
+  document.getElementById("loadMorePkmn").style.display ="inline-block";
 }

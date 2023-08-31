@@ -122,6 +122,7 @@ h2 {
     border-radius: 16px;
     margin: 16px;
     transition: transform 0.5s ease;
+    transition-duration: 500ms;
 }
 
 .main_card:hover {
@@ -241,7 +242,7 @@ h2 {
     position: sticky;
     bottom: 0;
     left: 50%;
-    display: inline-block;
+    display: none;
     transform: translateX(-50%);
     height: 40px;
     width: 40%;
@@ -332,4 +333,94 @@ h2 {
 .pokemonleft img {
     width: 185px;
     padding: 8px;
+}
+
+@media(max-width: 1105px) {
+    .pokemonright img {
+        width: 100px;
+    }
+
+    .pokemonleft img {
+        width: 100px;
+    }
+}
+
+@media(max-width: 954px) {
+    .fullscreen_card {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+}
+
+@media(max-width: 717px) {
+    .body_for_cards {
+        justify-content: space-evenly;
+    }
+
+    .main_card {
+        width: 248px;
+    }
+}
+
+@media(max-width: 670px) {
+.pkmnNameAndImg{
+    display:none;
+}
+.line{
+    display:none;
+}
+.pkmninfo{
+    margin-left: 0;
+}
+}
+
+@media(max-width: 600px) {
+    .loadmorebutton {
+        width: 80%;
+        left: 10%;
+        transform: none;
+        display: block;
+    }
+}
+
+@media(max-width: 580px) {
+    .main_card {
+        width: 374px;
+        max-height: 423px;
+    }
+    .main_card:hover{
+        transform: none;
+    }
+}
+
+@media(max-width: 470px) {
+    h1 {
+        font-size: 40px;
+    }
+
+    .logo_img {
+        height: 40px;
+        width: 40px;
+    }
+
+    .container-fluid {
+        height: 75px !important;
+    }
+
+}
+
+@media(max-width: 470px) {
+    .main_card {
+        width: 164px;
+        max-height: 423px;
+        margin: 2px;
+        margin-top: 8px;
+    }
+}
+
+@media(max-width: 360px) {
+    .main_card {
+        width: 90%;
+    }
 }
