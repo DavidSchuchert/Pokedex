@@ -22,6 +22,7 @@ async function init() {
   showLoadingScreen();
   await loadPokemon();
   await loadAllPokemonTypes();
+  updateTypeButtons();
   endLoadingScreen();
 }
 async function loadAllPokemon() {
@@ -643,4 +644,15 @@ function filterPokemonByType(type) {
   }
 
   updateMainCardList(matchingPokemonIndexes);
+}
+
+function updateTypeButtons() {
+  let uniqueTypes = Array.from(new Set(allPokemonTypes));
+
+  uniqueTypes.forEach((type) => {
+    let button = document.createElement("button");
+    button.textContent = type.charAt(0).toUpperCase() + type.slice(1);
+    button.onclick = () => filterPokemonByType(type);
+    document.getElementById("typeButtons").appendChild(button); 
+  });
 }
