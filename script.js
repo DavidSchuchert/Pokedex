@@ -84,7 +84,6 @@ async function loadAllPokemon() {
   for (let i = 0; i < newPokemon.results.length; i++) {
     await allPokemon.push(newPokemon.results[i]);
   }
-  console.log("Loaded Pokemon", allPokemon);
 }
 function loadMorePkmn() {
   pokemonoffset += 20;
@@ -111,8 +110,6 @@ async function loadPokemon() {
     let url = `https://pokeapi.co/api/v2/pokemon/${pokemon}`;
     let response = await fetch(url);
     currentPokemon[i] = await response.json();
-
-    console.log("Loaded Pokemon", currentPokemon);
   }
 }
 
