@@ -416,9 +416,15 @@ h2 {
     .pokemonright img {
         width: 100px;
     }
-
     .pokemonleft img {
         width: 100px;
+    }
+}
+
+@media(max-width: 954px) {
+    .fullscreen_card {
+        flex-direction: column;
+        gap: 8px;
     }
 }
 
@@ -428,75 +434,55 @@ h2 {
         padding-top: 8px;
         height: 111px !important;
     }
-
     h1 {
         font-size: 40px;
     }
-
     .logo_img {
         height: 40px;
         width: 40px;
     }
-
     .inputsearch {
         margin-top: 1px;
     }
-
     .arrow {
         display: flex;
     }
-
     .buttonbar {
         display: none;
     }
-}
-
-@media(max-width: 954px) {
-    .fullscreen_card {
-        flex-direction: column;
-        gap: 8px;
+    .loadmorebutton {
+        width: 60%;
     }
-
 }
 
 @media(max-width: 717px) {
     .body_for_cards {
         justify-content: space-evenly;
     }
-
     .main_card {
         width: 248px;
     }
-
     .loading img {
         margin-top: -100px;
         margin-left: -100px;
         width: 200px;
         height: 200px;
     }
-
-
-
-
 }
 
 @media(max-width: 670px) {
     .pkmnNameAndImg {
         display: none;
     }
-
     .line {
         display: none;
     }
-
     .pkmninfo {
         margin-left: 0;
     }
-
     .pkmn_img_mediaquery img {
         display: flex !important;
     }
-
     .pkmn_img_mediaquery {
         display: flex;
         align-items: center;
@@ -519,7 +505,6 @@ h2 {
         width: 374px;
         max-height: 423px;
     }
-
     .main_card:hover {
         transform: none;
     }
@@ -529,37 +514,26 @@ h2 {
     h1 {
         font-size: 40px;
     }
-
     h2 {
         font-size: 16px;
     }
-
     .myChart {
         height: 255px !important;
-
     }
-
     .logo_img {
         height: 40px;
         width: 40px;
     }
-
     .pokemonright img {
         width: 60px;
     }
-
     .pokemonleft img {
         width: 60px;
     }
-
     .pokecardimg:hover {
         animation: none;
         webkit-animation-duration: 0s;
     }
-
-}
-
-@media(max-width: 470px) {
     .main_card {
         width: 164px;
         height: 210px;
@@ -568,9 +542,18 @@ h2 {
     }
 }
 
+@media(max-width: 450px) {
+    .loadmorebutton {
+        font-size: 12px;
+    }
+}
+
 @media(max-width: 360px) {
     .main_card {
         width: 90%;
         height: 350px;
+    }
+    .loadmorebutton {
+        font-size: 10px;
     }
 }
