@@ -500,3 +500,26 @@ function openTypeMenu() {
     arrow.classList.remove("rotate");
   }
 }
+
+function debounce(func, wait) {
+  let timeout;
+  return function () {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      func.apply(this, arguments);
+    }, wait);
+  };
+}
+function checkScrollPosition() {
+  let windowHeight = window.innerHeight;
+  let documentHeight = document.documentElement.scrollHeight;
+  let scrollPosition = window.scrollY;
+
+  if (scrollPosition + windowHeight >= documentHeight) {
+    loadMorePkmn();
+  }
+}
+let debouncedCheckScroll = debounce(checkScrollPosition, 100);
+
+// Event-Listener hinzufügen
+window.addEventListener("scroll", debouncedCheckScroll);
