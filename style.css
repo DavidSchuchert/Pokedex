@@ -27,6 +27,7 @@ h1 {
     box-shadow: 0px 9px 7px 0px rgba(0, 0, 0, 0.27);
     padding-top: 30px;
     padding-bottom: 30px;
+   border-top: 5px solid black;
 }
 
 .container-fluid img {
@@ -96,8 +97,8 @@ h1 {
 
 .container-fluid {
     display: flex;
-    padding-left: 48px;
-    padding-right: 48px;
+    padding-left: 128px;
+    padding-right: 128px;
     justify-content: space-between !important;
     flex-wrap: nowrap !important;
     display: flex;
@@ -118,11 +119,12 @@ h2 {
 }
 
 .inputsearch {
-    border-radius: 5px;
+    border-radius: 13px;
 }
 
 .header_left {
     display: flex;
+    align-items: center;
 }
 
 .main_card {
@@ -348,6 +350,38 @@ h2 {
 
 .pkmn_img_mediaquery img {
     width: 60px;
+}
+
+.buttonbar{
+    background-color: #ffffff;
+    padding-bottom: 16px;
+    border-bottom: 5px solid black;
+    border-top: 5px solid black;
+    position: sticky;
+    top: 0;
+}
+.mainbody{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.typeButtons{
+    display:flex;
+    margin-top: 16px;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+}
+.typeButtons button{
+    width: 60px;
+    border-radius: 50%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color:black;
+    box-shadow: 3px 2px 2px #7b7b7b;
+    border: 3px solid black;
 }
 
 @media(max-width: 1105px) {

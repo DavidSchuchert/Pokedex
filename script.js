@@ -13,6 +13,26 @@ let pokemonleft = "";
 let pokemonright = "";
 let backgroundColorCardsright = "";
 let backgroundColorCardsleft = "";
+let typeColors = {
+  grass: "rgba(0, 128, 0, 0.5)", // Grün mit 50% Transparenz
+  fire: "rgba(255, 0, 0, 0.5)", // Rot mit 50% Transparenz
+  water: "rgba(0, 0, 255, 0.5)", // Blau mit 50% Transparenz
+  bug: "rgba(144, 238, 144, 0.5)", // Hellgrün mit 50% Transparenz
+  normal: "rgba(169, 169, 169, 0.5)", // Grau mit 50% Transparenz
+  poison: "rgba(200, 161, 201, 0.5)", // Lila mit 50% Transparenz
+  ground: "rgba(169, 152, 138, 0.5)", // Braun mit 50% Transparenz
+  fairy: "rgba(248, 206, 212, 0.5)", // Hellrosa mit 50% Transparenz
+  psychic: "rgba(115, 65, 113, 0.5)", // Dunkelrosa mit 50% Transparenz
+  fighting: "rgba(97, 95, 92, 0.5)", // Dunkelgrau mit 50% Transparenz
+  ghost: "rgba(154, 46, 253, 0.5)", // Lila mit 50% Transparenz
+  electric: "rgba(255, 255, 0, 0.5)", // Gelb mit 50% Transparenz
+  rock: "rgba(169, 169, 169, 0.5)", // Grau mit 50% Transparenz
+  flying: "rgba(173, 216, 230, 0.5)", // Hellblau mit 50% Transparenz
+  steel: "rgba(183, 183, 206, 0.5)", // Blaugrau mit 50% Transparenz
+  ice: "rgba(224, 255, 255, 0.5)", // Hellcyan mit 50% Transparenz
+  dragon: "rgba(111, 53, 252, 0.5)", // Blau mit 50% Transparenz
+  dark: "rgba(112, 87, 70, 0.5)", // Dunkelbraun mit 50% Transparenz
+};
 
 
 async function init() {
@@ -637,9 +657,14 @@ function handleSearchInput(inputElement) {
 function filterPokemonByType(type) {
   let matchingPokemonIndexes = [];
 
-  for (let i = 0; i < allPokemonTypes.length; i++) {
-    if (allPokemonTypes[i].includes(type)) {
-      matchingPokemonIndexes.push(i);
+  if (type === "reset") {
+    // Wenn der "Reset"-Button geklickt wurde, zeigen Sie alle Pokémon an
+    matchingPokemonIndexes = Array.from({ length: allPokemonTypes.length }, (_, i) => i);
+  } else {
+    for (let i = 0; i < allPokemonTypes.length; i++) {
+      if (allPokemonTypes[i].includes(type)) {
+        matchingPokemonIndexes.push(i);
+      }
     }
   }
 
@@ -647,12 +672,27 @@ function filterPokemonByType(type) {
 }
 
 function updateTypeButtons() {
+  document.getElementById("typeButtons").innerHTML = "";
   let uniqueTypes = Array.from(new Set(allPokemonTypes));
+
+  // Füge den "Reset"-Button hinzu
+  let resetButton = document.createElement("button");
+  resetButton.textContent = "Reset";
+  resetButton.classList = "badge";
+  resetButton.onclick = () => filterPokemonByType("reset");
+  document.getElementById("typeButtons").appendChild(resetButton);
 
   uniqueTypes.forEach((type) => {
     let button = document.createElement("button");
     button.textContent = type.charAt(0).toUpperCase() + type.slice(1);
+
+    // Überprüfen Sie, ob der Typ im typeColors-Objekt vorhanden ist
+    if (typeColors[type]) {
+      button.style.backgroundColor = typeColors[type];
+    }
+
+    button.classList = "badge";
     button.onclick = () => filterPokemonByType(type);
-    document.getElementById("typeButtons").appendChild(button); 
+    document.getElementById("typeButtons").appendChild(button);
   });
 }

@@ -30,7 +30,7 @@
                 <h1>PokeDex</h1>
             </div>
             <input class="inputsearch" type="text" id="inputsearch" placeholder="Search Pokémon"
-                oninput="handleSearchInput(this)"> 
+                oninput="handleSearchInput(this)">
             </a>
         </div>
     </nav>
@@ -38,7 +38,7 @@
 
 
 <body id="body" onload="init()">
-    <div id="typeButtons"></div>
+    
     <div class="loading" id="loading"> <img id="loading_img" src="./img/pokeball.png" alt=""> <span
             class="loading_text">Loading...</span> </div>
     <div onclick="closePokemonCard()" class="fullscreen_card" id="fullScreenCard" style="display:none">
@@ -52,9 +52,17 @@
             </div>
         </div>
     </div>
-    <div class="body_for_cards" id="bodyMainCards">
-        <!-- Add Card via Script -->
+
+    <div class="mainbody">
+        <div class="buttonbar">
+            <div class="typeButtons" id="typeButtons"></div>
+        </div>
+
+        <div class="body_for_cards" id="bodyMainCards">
+            <!-- Add Card via Script -->
+        </div>
     </div>
+
 
 
 
