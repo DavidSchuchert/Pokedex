@@ -27,8 +27,8 @@ h1 {
     box-shadow: 0px 9px 7px 0px rgba(0, 0, 0, 0.27);
     padding-top: 30px;
     padding-bottom: 30px;
-   border-top: 5px solid black;
-   border-bottom: 5px solid black;
+    border-top: 5px solid black;
+    border-bottom: 5px solid black;
 }
 
 .container-fluid img {
@@ -354,7 +354,7 @@ h2 {
     width: 60px;
 }
 
-.buttonbar{
+.buttonbar {
     background-color: #ffffff;
     padding-bottom: 16px;
     border-bottom: 5px solid black;
@@ -362,44 +362,52 @@ h2 {
     top: 0;
     justify-content: center;
 }
-.mainbody{
-    display:flex;
+
+.mainbody {
+    display: flex;
     flex-direction: column;
     justify-content: center;
 }
-.typeButtons{
-    display:flex;
+
+.typeButtons {
+    display: flex;
     margin-top: 16px;
     flex-wrap: wrap;
     gap: 16px;
     justify-content: center;
 }
-.typeButtons button{
+
+.typeButtons button {
     width: 60px;
     border-radius: 50%;
     height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
-    color:black;
+    color: black;
     box-shadow: 3px 2px 2px #7b7b7b;
     border: 3px solid black;
 }
-.arrow{
-    display:none;
+
+.arrow {
+    display: none;
     justify-content: center;
     border-bottom: 5px solid black;
 }
-.arrow :hover{
+
+.arrow :hover {
     cursor: pointer;
 }
-.arrow img{
+
+.arrow img {
     width: 30px;
 }
+
 .rotate {
-	transition: transform 0.2s ease-in;
+    transition: transform 0.2s ease-in;
     transform: rotate(180deg);
 }
+
 .rotateback {
     transform: rotate(-180deg);
 }
@@ -413,12 +421,14 @@ h2 {
         width: 100px;
     }
 }
-@media(max-width: 900px){
+
+@media(max-width: 900px) {
     .container-fluid {
         flex-direction: column;
         padding-top: 8px;
         height: 111px !important;
     }
+
     h1 {
         font-size: 40px;
     }
@@ -427,16 +437,20 @@ h2 {
         height: 40px;
         width: 40px;
     }
-    .inputsearch{
+
+    .inputsearch {
         margin-top: 1px;
     }
-    .arrow{
-        display:flex;
+
+    .arrow {
+        display: flex;
     }
-    .buttonbar{
-        display:none;
+
+    .buttonbar {
+        display: none;
     }
 }
+
 @media(max-width: 954px) {
     .fullscreen_card {
         flex-direction: column;

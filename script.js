@@ -49,6 +49,21 @@ let typeColorMap = {
   electric: "yellow !important",
   rock: "grey !important",
 };
+let typeToImage = {
+  grass: "field.webp",
+  fire: "fire.jpg",
+  water: "water.avif",
+  bug: "bug.jpeg",
+  normal: "normal.jpeg",
+  poison: "poison.jpg",
+  ground: "ground.jpg",
+  fairy: "fairy.jpg",
+  psychic: "psychic.jpg",
+  fighting: "fighting.jpg",
+  ghost: "ghost.jpg",
+  electric: "electric.jpg",
+  rock: "rock.jpg",
+};
 let searchTimeout;
 
 async function init() {
@@ -61,6 +76,7 @@ async function init() {
   updateTypeButtons();
   endLoadingScreen();
 }
+/* load functions */
 async function loadAllPokemon() {
   let url = `https://pokeapi.co/api/v2/pokemon/?offset=${pokemonoffset}&limit=${pokemonLoadAmmount}`;
   let response = await fetch(url);
@@ -88,157 +104,57 @@ function loadAllPokemonTypes() {
   }
 }
 
-function changePokemonCardBackground(i) {
-  if (allPokemonTypes[i] == "grass") {
-    backgroundColorCards = 'style="background-image: url(./img/field.webp);"';
-  }
+async function loadPokemon() {
+  for (let i = 0 + pokemonoffset; i < allPokemonNames.length; i++) {
+    let pokemon = allPokemonNames[i];
 
-  if (allPokemonTypes[i] == "fire") {
-    backgroundColorCards = 'style="background-image: url(./img/fire.jpg);"';
+    let url = `https://pokeapi.co/api/v2/pokemon/${pokemon}`;
+    let response = await fetch(url);
+    currentPokemon[i] = await response.json();
+
+    console.log("Loaded Pokemon", currentPokemon);
   }
-  if (allPokemonTypes[i] == "water") {
-    backgroundColorCards = 'style="background-image: url(./img/water.avif);"';
-  }
-  if (allPokemonTypes[i] == "bug") {
-    backgroundColorCards = 'style="background-image: url(./img/bug.jpeg);"';
-  }
-  if (allPokemonTypes[i] == "normal") {
-    backgroundColorCards = 'style="background-image: url(./img/normal.jpeg);"';
-  }
-  if (allPokemonTypes[i] == "poison") {
-    backgroundColorCards = 'style="background-image: url(./img/poison.jpg);"';
-  }
-  if (allPokemonTypes[i] == "ground") {
-    backgroundColorCards = 'style="background-image: url(./img/ground.jpg);"';
-  }
-  if (allPokemonTypes[i] == "fairy") {
-    backgroundColorCards = 'style="background-image: url(./img/fairy.jpg);"';
-  }
-  if (allPokemonTypes[i] == "psychic") {
-    backgroundColorCards = 'style="background-image: url(psychic.jpg);"';
-  }
-  if (allPokemonTypes[i] == "fighting") {
-    backgroundColorCards = 'style="background-image: url(./img/fighting.jpg);"';
-  }
-  if (allPokemonTypes[i] == "ghost") {
-    backgroundColorCards = 'style="background-image: url(./img/ghost.jpg);"';
-  }
-  if (allPokemonTypes[i] == "electric") {
-    backgroundColorCards = 'style="background-image: url(./img/electric.jpg);"';
-  }
-  if (allPokemonTypes[i] == "rock") {
-    backgroundColorCards = 'style="background-image: url(./img/rock.jpg);"';
+}
+
+/* color or background changes */
+function changePokemonCardBackground(i) {
+  let img = typeToImage[allPokemonTypes[i]];
+  if (img) {
+    backgroundColorCards = `style="background-image: url(./img/${img});"`;
   }
 }
 function changePokemonCardBackgroundRight(i) {
-  if (allPokemonTypes[i + 1] == "grass") {
-    backgroundColorCardsright =
-      'style="background-image: url(./img/field.webp);"';
-  }
+  let type = allPokemonTypes[i + 1];
+  let image = typeToImage[type];
 
-  if (allPokemonTypes[i + 1] == "fire") {
-    backgroundColorCardsright =
-      'style="background-image: url(./img/fire.jpg);"';
-  }
-  if (allPokemonTypes[i + 1] == "water") {
-    backgroundColorCardsright =
-      'style="background-image: url(./img/water.avif);"';
-  }
-  if (allPokemonTypes[i + 1] == "bug") {
-    backgroundColorCardsright =
-      'style="background-image: url(./img/bug.jpeg);"';
-  }
-
-  if (allPokemonTypes[i + 1] == "normal") {
-    backgroundColorCardsright =
-      'style="background-image: url(./img/normal.jpeg);"';
-  }
-  if (allPokemonTypes[i + 1] == "poison") {
-    backgroundColorCardsright =
-      'style="background-image: url(./img/poison.jpg);"';
-  }
-  if (allPokemonTypes[i + 1] == "ground") {
-    backgroundColorCardsright =
-      'style="background-image: url(./img/ground.jpg);"';
-  }
-  if (allPokemonTypes[i + 1] == "fairy") {
-    backgroundColorCardsright =
-      'style="background-image: url(./img/fairy.jpg);"';
-  }
-  if (allPokemonTypes[i + 1] == "psychic") {
-    backgroundColorCardsright = 'style="background-image: url(psychic.jpg);"';
-  }
-  if (allPokemonTypes[i + 1] == "fighting") {
-    backgroundColorCardsright =
-      'style="background-image: url(./img/fighting.jpg);"';
-  }
-  if (allPokemonTypes[i + 1] == "ghost") {
-    backgroundColorCardsright =
-      'style="background-image: url(./img/ghost.jpg);"';
-  }
-  if (allPokemonTypes[i + 1] == "electric") {
-    backgroundColorCardsright =
-      'style="background-image: url(./img/electric.jpg);"';
-  }
-  if (allPokemonTypes[i + 1] == "rock") {
-    backgroundColorCardsright =
-      'style="background-image: url(./img/rock.jpg);"';
+  if (image) {
+    backgroundColorCardsright = `style="background-image: url(./img/${image});"`;
   }
 }
 
 function changePokemonCardBackgroundLeft(i) {
-  if (allPokemonTypes[i - 1] == "grass") {
-    backgroundColorCardsleft =
-      'style="background-image: url(./img/field.webp);"';
+  let type = allPokemonTypes[i - 1];
+  let image = typeToImage[type];
+
+  if (image) {
+    backgroundColorCardsleft = `style="background-image: url(./img/${image});"`;
+  }
+}
+function createColoredTypeButton(i) {
+  let typeLength = currentPokemon[i]["types"].length;
+
+  if (typeLength >= 1) {
+    let type1 = currentPokemon[i]["types"][0]["type"]["name"];
+    typebgcolor1 = typeColorMap[type1] || "defaultColor";
   }
 
-  if (allPokemonTypes[i - 1] == "fire") {
-    backgroundColorCardsleft = 'style="background-image: url(./img/fire.jpg);"';
-  }
-  if (allPokemonTypes[i - 1] == "water") {
-    backgroundColorCardsleft =
-      'style="background-image: url(./img/water.avif);"';
-  }
-  if (allPokemonTypes[i - 1] == "bug") {
-    backgroundColorCardsleft = 'style="background-image: url(./img/bug.jpeg);"';
-  }
-
-  if (allPokemonTypes[i - 1] == "normal") {
-    backgroundColorCardsleft =
-      'style="background-image: url(./img/normal.jpeg);"';
-  }
-  if (allPokemonTypes[i - 1] == "poison") {
-    backgroundColorCardsleft =
-      'style="background-image: url(./img/poison.jpg);"';
-  }
-  if (allPokemonTypes[i - 1] == "ground") {
-    backgroundColorCardsleft =
-      'style="background-image: url(./img/ground.jpg);"';
-  }
-  if (allPokemonTypes[i - 1] == "fairy") {
-    backgroundColorCardsleft =
-      'style="background-image: url(./img/fairy.jpg);"';
-  }
-  if (allPokemonTypes[i - 1] == "psychic") {
-    backgroundColorCardsleft = 'style="background-image: url(psychic.jpg);"';
-  }
-  if (allPokemonTypes[i - 1] == "fighting") {
-    backgroundColorCardsleft =
-      'style="background-image: url(./img/fighting.jpg);"';
-  }
-  if (allPokemonTypes[i - 1] == "ghost") {
-    backgroundColorCardsleft =
-      'style="background-image: url(./img/ghost.jpg);"';
-  }
-  if (allPokemonTypes[i - 1] == "electric") {
-    backgroundColorCardsleft =
-      'style="background-image: url(./img/electric.jpg);"';
-  }
-  if (allPokemonTypes[i - 1] == "rock") {
-    backgroundColorCardsleft = 'style="background-image: url(./img/rock.jpg);"';
+  if (typeLength === 2) {
+    let type2 = currentPokemon[i]["types"][1]["type"]["name"];
+    typebgcolor2 = typeColorMap[type2] || "defaultColor";
   }
 }
 
+/* Big Pokemoncard generation */
 function openPokemonCard(i) {
   changePokemonCardBackground(i);
   renderPokemoncard(i);
@@ -269,9 +185,9 @@ function createChart(i) {
         {
           label: "Base stats",
           data: [hp, attack, defense, specialattack, specialdefense, speed],
-          backgroundColor: "rgba(255, 0, 0, 0.52)", // Hintergrundfarbe des Charts
-          borderColor: "rgba(101, 15, 181, 0.3)", // Farbe der Linie
-          borderWidth: 0.5, // Dicke der Linie
+          backgroundColor: "rgba(255, 0, 0, 0.52)", 
+          borderColor: "rgba(101, 15, 181, 0.3)", 
+          borderWidth: 0.5,
         },
       ],
     },
@@ -300,19 +216,6 @@ function createChart(i) {
       },
     },
   });
-}
-function createColoredTypeButton(i) {
-  let typeLength = currentPokemon[i]["types"].length;
-
-  if (typeLength >= 1) {
-    let type1 = currentPokemon[i]["types"][0]["type"]["name"];
-    typebgcolor1 = typeColorMap[type1] || "defaultColor";
-  }
-
-  if (typeLength === 2) {
-    let type2 = currentPokemon[i]["types"][1]["type"]["name"];
-    typebgcolor2 = typeColorMap[type2] || "defaultColor";
-  }
 }
 
 function pokeInformationRequest(i) {
@@ -413,18 +316,7 @@ function closePokemonCard() {
   document.getElementById("fullScreenCard").style.display = "none";
 }
 
-async function loadPokemon() {
-  for (let i = 0 + pokemonoffset; i < allPokemonNames.length; i++) {
-    let pokemon = allPokemonNames[i];
-
-    let url = `https://pokeapi.co/api/v2/pokemon/${pokemon}`;
-    let response = await fetch(url);
-    currentPokemon[i] = await response.json();
-
-    console.log("Loaded Pokemon", currentPokemon);
-  }
-}
-
+/* small Pokemoncard generation */
 function renderPokemonInfo(i) {
   let pokeInfoBgColor = "";
 
@@ -486,6 +378,7 @@ function renderPokemonInfo(i) {
     `;
 }
 
+/* loading function */
 function showLoadingScreen() {
   document.getElementById("loading").style.display = "flex";
   document.getElementById("loadMorePkmn").style.display = "none";
@@ -499,6 +392,8 @@ function endLoadingScreen() {
 function hideLoadMoreButton() {
   document.getElementById("loadMorePkmn").style.display = "none";
 }
+
+/* search and filter functions */
 
 function searchPokemon() {
   let searchTerm = document.getElementById("inputsearch").value.toLowerCase();
@@ -552,7 +447,6 @@ function filterPokemonByType(type) {
   let matchingPokemonIndexes = [];
 
   if (type === "reset") {
-    // Wenn der "Reset"-Button geklickt wurde, zeigen Sie alle Pokémon an
     matchingPokemonIndexes = Array.from(
       { length: allPokemonTypes.length },
       (_, i) => i
@@ -572,7 +466,7 @@ function updateTypeButtons() {
   document.getElementById("typeButtons").innerHTML = "";
   let uniqueTypes = Array.from(new Set(allPokemonTypes));
 
-  // Füge den "Reset"-Button hinzu
+
   let resetButton = document.createElement("button");
   resetButton.textContent = "Reset";
   resetButton.classList = "badge";
@@ -583,7 +477,7 @@ function updateTypeButtons() {
     let button = document.createElement("button");
     button.textContent = type.charAt(0).toUpperCase() + type.slice(1);
 
-    // Überprüfen Sie, ob der Typ im typeColors-Objekt vorhanden ist
+
     if (typeColors[type]) {
       button.style.backgroundColor = typeColors[type];
     }
