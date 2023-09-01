@@ -14,6 +14,7 @@ let pokemonright = "";
 let backgroundColorCardsright = "";
 let backgroundColorCardsleft = "";
 
+
 async function init() {
   hideLoadMoreButton();
   await loadAllPokemon();
@@ -33,12 +34,7 @@ async function loadAllPokemon() {
   console.log("Loaded Pokemon", allPokemon);
 }
 function loadMorePkmn() {
-  pokemonoffset = pokemonoffset += 20;
-  /*   currentPokemon = [];
-  allPokemon = [];
-  allPokemonNames = [];
-  allPokemonTypes = [];
-  backgroundColorCards = ""; */
+  pokemonoffset += 20;
   init();
 }
 
