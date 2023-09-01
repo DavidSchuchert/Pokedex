@@ -33,7 +33,23 @@ let typeColors = {
   dragon: "rgba(111, 53, 252, 0.5)", // Blau mit 50% Transparenz
   dark: "rgba(112, 87, 70, 0.5)", // Dunkelbraun mit 50% Transparenz
 };
-
+let typeColorMap = {
+  grass: "green !important",
+  fire: "red !important",
+  water: "blue !important",
+  normal: "grey !important",
+  bug: "lightgreen !important",
+  flying: "lightblue !important",
+  poison: "#C8A2C8 !important",
+  ground: "#a9988a !important",
+  fairy: "#F8CED4 !important",
+  psychic: "#734171 !important",
+  fighting: "#615f5c !important",
+  ghost: "#9a2efd !important",
+  electric: "yellow !important",
+  rock: "grey !important",
+};
+let searchTimeout;
 
 async function init() {
   hideLoadMoreButton();
@@ -286,136 +302,16 @@ function createChart(i) {
   });
 }
 function createColoredTypeButton(i) {
-  if (currentPokemon[i]["types"].length == 1) {
-    if (currentPokemon[i]["types"]["0"]["type"]["name"] == "grass") {
-      typebgcolor1 = "green !important";
-    }
-    if (currentPokemon[i]["types"]["0"]["type"]["name"] == "fire") {
-      typebgcolor1 = "red !important";
-    }
-    if (currentPokemon[i]["types"]["0"]["type"]["name"] == "water") {
-      typebgcolor1 = "blue !important";
-    }
-    if (currentPokemon[i]["types"]["0"]["type"]["name"] == "normal") {
-      typebgcolor1 = "grey !important";
-    }
-    if (currentPokemon[i]["types"]["0"]["type"]["name"] == "bug") {
-      typebgcolor1 = "lightgreen !important";
-    }
-    if (currentPokemon[i]["types"]["0"]["type"]["name"] == "flying") {
-      typebgcolor1 = "lightblue !important";
-    }
-    if (currentPokemon[i]["types"]["0"]["type"]["name"] == "poison") {
-      typebgcolor1 = "#C8A2C8 !important";
-    }
-    if (currentPokemon[i]["types"]["0"]["type"]["name"] == "ground") {
-      typebgcolor1 = "#a9988a !important";
-    }
-    if (currentPokemon[i]["types"]["0"]["type"]["name"] == "fairy") {
-      typebgcolor1 = "#F8CED4 !important";
-    }
-    if (currentPokemon[i]["types"]["0"]["type"]["name"] == "psychic") {
-      typebgcolor1 = "#734171 !important";
-    }
-    if (currentPokemon[i]["types"]["0"]["type"]["name"] == "fighting") {
-      typebgcolor1 = "#615f5c !important";
-    }
-    if (currentPokemon[i]["types"]["0"]["type"]["name"] == "ghost") {
-      typebgcolor1 = "#9a2efd !important";
-    }
-    if (currentPokemon[i]["types"]["0"]["type"]["name"] == "electric") {
-      typebgcolor1 = "yellow !important";
-    }
-    if (currentPokemon[i]["types"]["0"]["type"]["name"] == "rock") {
-      typebgcolor1 = "grey !important";
-    }
-  }
-  if (currentPokemon[i]["types"].length == 2) {
-    if (currentPokemon[i]["types"]["0"]["type"]["name"] == "grass") {
-      typebgcolor1 = "green !important";
-    }
-    if (currentPokemon[i]["types"]["0"]["type"]["name"] == "fire") {
-      typebgcolor1 = "red !important";
-    }
-    if (currentPokemon[i]["types"]["0"]["type"]["name"] == "water") {
-      typebgcolor1 = "blue !important";
-    }
-    if (currentPokemon[i]["types"]["0"]["type"]["name"] == "normal") {
-      typebgcolor1 = "grey !important";
-    }
-    if (currentPokemon[i]["types"]["0"]["type"]["name"] == "bug") {
-      typebgcolor1 = "lightgreen !important";
-    }
-    if (currentPokemon[i]["types"]["0"]["type"]["name"] == "flying") {
-      typebgcolor1 = "lightblue !important";
-    }
-    if (currentPokemon[i]["types"]["0"]["type"]["name"] == "poison") {
-      typebgcolor1 = "#C8A2C8 !important";
-    }
-    if (currentPokemon[i]["types"]["0"]["type"]["name"] == "ground") {
-      typebgcolor1 = "#a9988a !important";
-    }
-    if (currentPokemon[i]["types"]["0"]["type"]["name"] == "fairy") {
-      typebgcolor1 = "#F8CED4 !important";
-    }
-    if (currentPokemon[i]["types"]["0"]["type"]["name"] == "psychic") {
-      typebgcolor1 = "#734171 !important";
-    }
-    if (currentPokemon[i]["types"]["0"]["type"]["name"] == "fighting") {
-      typebgcolor1 = "#615f5c !important";
-    }
-    if (currentPokemon[i]["types"]["0"]["type"]["name"] == "ghost") {
-      typebgcolor1 = "#9a2efd !important";
-    }
-    if (currentPokemon[i]["types"]["0"]["type"]["name"] == "electric") {
-      typebgcolor1 = "yellow !important";
-    }
-    if (currentPokemon[i]["types"]["0"]["type"]["name"] == "rock") {
-      typebgcolor1 = "grey !important";
-    }
+  let typeLength = currentPokemon[i]["types"].length;
 
-    if (currentPokemon[i]["types"]["1"]["type"]["name"] == "grass") {
-      typebgcolor2 = "green !important";
-    }
-    if (currentPokemon[i]["types"]["1"]["type"]["name"] == "fire") {
-      typebgcolor2 = "red !important";
-    }
-    if (currentPokemon[i]["types"]["1"]["type"]["name"] == "water") {
-      typebgcolor2 = "blue !important";
-    }
-    if (currentPokemon[i]["types"]["1"]["type"]["name"] == "normal") {
-      typebgcolor2 = "grey !important";
-    }
-    if (currentPokemon[i]["types"]["1"]["type"]["name"] == "bug") {
-      typebgcolor2 = "lightgreen !important";
-    }
-    if (currentPokemon[i]["types"]["1"]["type"]["name"] == "flying") {
-      typebgcolor2 = "lightblue !important";
-    }
-    if (currentPokemon[i]["types"]["1"]["type"]["name"] == "poison") {
-      typebgcolor2 = "#C8A2C8 !important";
-    }
-    if (currentPokemon[i]["types"]["1"]["type"]["name"] == "ground") {
-      typebgcolor1 = "#a9988a !important";
-    }
-    if (currentPokemon[i]["types"]["1"]["type"]["name"] == "fairy") {
-      typebgcolor1 = "#F8CED4 !important";
-    }
-    if (currentPokemon[i]["types"]["1"]["type"]["name"] == "psychic") {
-      typebgcolor1 = "#734171 !important";
-    }
-    if (currentPokemon[i]["types"]["1"]["type"]["name"] == "fighting") {
-      typebgcolor1 = "#615f5c !important";
-    }
-    if (currentPokemon[i]["types"]["1"]["type"]["name"] == "ghost") {
-      typebgcolor1 = "#9a2efd !important";
-    }
-    if (currentPokemon[i]["types"]["1"]["type"]["name"] == "electric") {
-      typebgcolor1 = "yellow !important";
-    }
-    if (currentPokemon[i]["types"]["1"]["type"]["name"] == "rock") {
-      typebgcolor1 = "grey !important";
-    }
+  if (typeLength >= 1) {
+    let type1 = currentPokemon[i]["types"][0]["type"]["name"];
+    typebgcolor1 = typeColorMap[type1] || "defaultColor";
+  }
+
+  if (typeLength === 2) {
+    let type2 = currentPokemon[i]["types"][1]["type"]["name"];
+    typebgcolor2 = typeColorMap[type2] || "defaultColor";
   }
 }
 
@@ -628,8 +524,6 @@ function updateMainCardList(filteredIndexes) {
   });
 }
 
-let searchTimeout;
-
 function handleSearchInput(inputElement) {
   clearTimeout(searchTimeout);
 
@@ -659,7 +553,10 @@ function filterPokemonByType(type) {
 
   if (type === "reset") {
     // Wenn der "Reset"-Button geklickt wurde, zeigen Sie alle Pokémon an
-    matchingPokemonIndexes = Array.from({ length: allPokemonTypes.length }, (_, i) => i);
+    matchingPokemonIndexes = Array.from(
+      { length: allPokemonTypes.length },
+      (_, i) => i
+    );
   } else {
     for (let i = 0; i < allPokemonTypes.length; i++) {
       if (allPokemonTypes[i].includes(type)) {
@@ -697,9 +594,9 @@ function updateTypeButtons() {
   });
 }
 
-function openTypeMenu(){
- let  bar = document.getElementById('buttonbar');
- let arrow = document.getElementById('arrow');
+function openTypeMenu() {
+  let bar = document.getElementById("buttonbar");
+  let arrow = document.getElementById("arrow");
 
   if (bar.style.display === "none") {
     bar.style.display = "flex";
