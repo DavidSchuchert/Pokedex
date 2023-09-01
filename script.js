@@ -632,3 +632,15 @@ function handleSearchInput(inputElement) {
     updateMainCardList(allPokemonNames.map((_, index) => index));
   }
 }
+
+function filterPokemonByType(type) {
+  let matchingPokemonIndexes = [];
+
+  for (let i = 0; i < allPokemonTypes.length; i++) {
+    if (allPokemonTypes[i].includes(type)) {
+      matchingPokemonIndexes.push(i);
+    }
+  }
+
+  updateMainCardList(matchingPokemonIndexes);
+}

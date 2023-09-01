@@ -30,7 +30,7 @@
                 <h1>PokeDex</h1>
             </div>
             <input class="inputsearch" type="text" id="inputsearch" placeholder="Search Pokémon"
-                oninput="handleSearchInput(this)">
+                oninput="handleSearchInput(this)"> 
             </a>
         </div>
     </nav>
@@ -38,6 +38,19 @@
 
 
 <body id="body" onload="init()">
+    <button onclick="filterPokemonByType('grass')">Grass</button>
+    <button onclick="filterPokemonByType('fire')">Fire</button>
+    <button onclick="filterPokemonByType('water')">Water</button>
+    <button onclick="filterPokemonByType('bug')">Bug</button>
+    <button onclick="filterPokemonByType('normal')">Normal</button>
+    <button onclick="filterPokemonByType('poison')">Poison</button>
+    <button onclick="filterPokemonByType('ground')">Ground</button>
+    <button onclick="filterPokemonByType('fairy')">Fairy</button>
+    <button onclick="filterPokemonByType('psychic')">Psychic</button>
+    <button onclick="filterPokemonByType('fighting')">Fighting</button>
+    <button onclick="filterPokemonByType('ghost')">Ghost</button>
+    <button onclick="filterPokemonByType('electric')">Electric</button>
+    <button onclick="filterPokemonByType('rock')">Rock</button>
     <div class="loading" id="loading"> <img id="loading_img" src="./img/pokeball.png" alt=""> <span
             class="loading_text">Loading...</span> </div>
     <div onclick="closePokemonCard()" class="fullscreen_card" id="fullScreenCard" style="display:none">
