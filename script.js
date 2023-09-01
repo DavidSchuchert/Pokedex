@@ -696,3 +696,16 @@ function updateTypeButtons() {
     document.getElementById("typeButtons").appendChild(button);
   });
 }
+
+function openTypeMenu(){
+ let  bar = document.getElementById('buttonbar');
+ let arrow = document.getElementById('arrow');
+
+  if (bar.style.display === "none") {
+    bar.style.display = "flex";
+    arrow.classList.add("rotate");
+  } else {
+    bar.style.display = "none";
+    arrow.classList.remove("rotate");
+  }
+}
