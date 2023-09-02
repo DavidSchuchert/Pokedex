@@ -456,7 +456,6 @@ function filterPokemonByType(type) {
     }
   }
 
-  
   updateMainCardList(matchingPokemonIndexes);
 }
 
